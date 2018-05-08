@@ -1,0 +1,1 @@
+#Clase que define el metodo jugador
