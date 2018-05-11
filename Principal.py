@@ -1,5 +1,6 @@
 import pygame,sys
 from pygame.locals import *
+from Juego import *
 
 pygame.init()                                #Inicializa python
 
@@ -15,3 +16,4 @@ while True:                                  #Bucle principal
             sys.exit()
 
     pygame.display.update()                  #Actualiza la pantalla
+
