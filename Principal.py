@@ -1,7 +1,5 @@
 import pygame,sys
 from pygame.locals import *
-from Juego import *
-
 pygame.init()                                #Inicializa python
 
 ventana = pygame.display.set_mode((400,400)) #Tamaño de la ventana
