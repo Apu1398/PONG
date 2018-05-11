@@ -15,8 +15,8 @@ class juego:
                 self.matriz[filas].append(0)
         return self.matriz
 
-juego1=juego()
-m1=juego1.crear_matriz(5,5)
-print(m1)
+# juego1=juego()
+# m1=juego1.crear_matriz(5,5)
+# print(m1)
 
 
