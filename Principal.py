@@ -15,7 +15,7 @@ ventana.fill(pygame.Color(0,0,0))            #Color del fondo de la ventana(negr
 juego=juego()
 matriz_principal = juego.crear_matriz(25,40)      #Crea la matriz de control
 #5matriz_principal
-jugador_humano1= Jugado(40) #, 200,True, ventana )
+jugador_humano1= Jugador(40, 200,True, ventana )
 
 ALTO=15                                          #Constantes de la matriz de la interfaz
 ANCHO=15                                         #Constantes de la matriz de la interfaz
