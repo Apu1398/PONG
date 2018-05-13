@@ -22,10 +22,13 @@ class Jugador(pygame.sprite.Sprite):
             matriz[i][self.x]=1
         return matriz
 
-    # def moverse(self,matriz,direccion):
-    #     if self.Humano:
-    #         for i in range(self.y)
-    #         pass
+    def moverse(self,matriz):
+        self.y-=1
+        for i in range(0,24):
+            matriz[i][self.x] = 0
+        for i in range(self.y,self.y + self.tam_paleta):
+            matriz[i][self.x]=1
+        return matriz
 
 
 

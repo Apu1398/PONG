@@ -28,15 +28,18 @@ while True:                                  #Bucle principal
     for i in range(25):                      #Bucle que actualiza la matriz dependiendo de la matriz principal
 
         for j in range(40):
-            color = BLANCO                            #El color prederteminado sera el negro
+            color = NEGRO                           #El color prederteminado sera el negro
             if matriz_principal[i][j] == 1:           #Si hay un uno el cuadro será blanco
-                color=NEGRO
-            pygame.draw.rect(ventana,color,[ALTO*j,ANCHO*i,ALTO,ANCHO],0)
+                color=BLANCO
+            pygame.draw.rect(ventana,color,[ALTO*j,ANCHO*i,ALTO,ANCHO],1)
 
     for event in pygame.event.get():          #Eventos
         if event.type== QUIT:                 #Si se pulsa la "x"
             pygame.quit()
             sys.exit()
+        elif event.type== MOUSEBUTTONDOWN:
+            print("Hola comequeso")
+            matriz_principal=jugador1.moverse(matriz_principal)
 
 
     pygame.display.update()                  #Actualiza la pantalla
