@@ -43,4 +43,6 @@ while True:                                  #Bucle principal
             matriz_principal = jugador1.moverse(matriz_principal,1)
 
 
+
     pygame.display.update()                  #Actualiza la pantalla
+

@@ -24,13 +24,14 @@ class Jugador(pygame.sprite.Sprite):
 
     def moverse(self,matriz,direccion):
         self.y+=direccion                                           #Direccion de movimiento
-        if self.y >= 0:
-            for i in range(0,24):                               #Iteracion que limpia la parte de la pantalla del juagdor
+
+        if self.y >= 0 and (self.y + self.tam_paleta) <=25:
+            for i in range(0,25):                               #Iteracion que limpia la parte de la pantalla del juagdor
              matriz[i][self.x] = 0
             for i in range(self.y,self.y + self.tam_paleta):    #Pone en 1 la nueva posicion de la paleta
                matriz[i][self.x]=1
         else:
-            self.y=0
+            self.y-=direccion
 
         return matriz
 
