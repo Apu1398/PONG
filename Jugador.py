@@ -45,3 +45,4 @@ class Jugador(pygame.sprite.Sprite):
     def movimiento_AI(self):
         pass
 
+
