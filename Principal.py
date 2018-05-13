@@ -37,9 +37,10 @@ while True:                                  #Bucle principal
         if event.type== QUIT:                 #Si se pulsa la "x"
             pygame.quit()
             sys.exit()
-        elif event.type== MOUSEBUTTONDOWN:
-            print("Hola comequeso")
-            matriz_principal=jugador1.moverse(matriz_principal)
+        elif pygame.key.get_pressed()[K_UP]:
+            matriz_principal=jugador1.moverse(matriz_principal,-1)
+        elif pygame.key.get_pressed()[K_DOWN]:
+            matriz_principal = jugador1.moverse(matriz_principal,1)
 
 
     pygame.display.update()                  #Actualiza la pantalla
