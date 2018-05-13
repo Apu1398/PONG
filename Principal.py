@@ -38,9 +38,9 @@ while True:                                  #Bucle principal
             pygame.quit()
             sys.exit()
         elif pygame.key.get_pressed()[K_UP]:
-            matriz_principal=jugador1.moverse(matriz_principal,-1)
+            matriz_principal=jugador2.moverse(matriz_principal,-1)
         elif pygame.key.get_pressed()[K_DOWN]:
-            matriz_principal = jugador1.moverse(matriz_principal,1)
+            matriz_principal = jugador2.moverse(matriz_principal,1)
 
 
 
