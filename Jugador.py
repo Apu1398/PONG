@@ -15,7 +15,6 @@ class Jugador(pygame.sprite.Sprite):
         self.tam_paleta=tam_paleta
         #self.cantidad_paleta=cantidad_paleta
         self.tipo_jugador=tipo_jugador
-        #self.paleta= pygame.draw.line(ventana, WHITE, [0 + x, 25 + 15], [0 + x, 200 + 15], 15)
         self.x=x
         self.y=y
         self.ventana=ventana
