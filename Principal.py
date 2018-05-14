@@ -24,7 +24,7 @@ NEGRO = (0,0,0)                                  #Constantes de la matriz de la 
 AZUL= (16,94,205)
 BLANCO = (255,255,255)                           #Constantes de la matriz de la interfaz
 
-Principal = True                                  #Inicia con el menu principal
+Principal = False                                 #Inicia con el menu principal
 FUENTE= pygame.font.Font(None,35)                 #Crea variable con la fuente que se va utilizar
 Imagen_titulo = pygame.image.load("Titulo.png")   #Crea la imagen para el titulo
 
