@@ -17,7 +17,7 @@ class Jugador(pygame.sprite.Sprite):
         self.x=x
         self.y=y
 
-    def dibujar(self, matriz):
+    def dibujar_en_pantalla(self, matriz):
         for i in range(self.y, self.y+self.tam_paleta):
             matriz[i][self.x]=1
         return matriz
