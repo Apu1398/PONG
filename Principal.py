@@ -24,16 +24,16 @@ NEGRO = (0,0,0)                                  #Constantes de la matriz de la 
 AZUL= (16,94,205)
 BLANCO = (255,255,255)                           #Constantes de la matriz de la interfaz
 
-Principal=True                                   #Inicia con el menu principal
-FUENTE= pygame.font.Font(None,35)                #Crea variable con la fuente que se va utilizar
-Imagen_titulo = pygame.image.load("Titulo.png")
+Principal = True                                  #Inicia con el menu principal
+FUENTE= pygame.font.Font(None,35)                 #Crea variable con la fuente que se va utilizar
+Imagen_titulo = pygame.image.load("Titulo.png")   #Crea la imagen para el titulo
 
 while True:                                                    #Bucle principal
 
     if Principal:                                              #Si el usuario esta en la pantalla principal
 
         pygame.draw.rect(ventana,AZUL, [3,3,595,369], 15)      #Dibuja el marco
-        ventana.blit(Imagen_titulo,(195,10))
+        ventana.blit(Imagen_titulo,(195,10))                   #Posiciona el titulo a la ventana
 
         #Botones------------------------------------------------------------------------------------------------------
         pygame.draw.rect(ventana,AZUL,[160,150,265,30],2)            #Dibuja boton, lo cuadra segun el rectangulo ya creado
