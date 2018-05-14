@@ -25,12 +25,26 @@ AZUL= (16,94,205)
 BLANCO = (255,255,255)                           #Constantes de la matriz de la interfaz
 
 Principal=True                                   #Inicia con el menu principal
+FUENTE= pygame.font.Font(None,35)                #Crea variable con la fuente que se va utilizar
 
 
 while True:                                                    #Bucle principal
 
     if Principal:                                              #Si el usuario esta en la pantalla principal
+
         pygame.draw.rect(ventana,AZUL, [3,3,595,369], 15)      #Dibuja el marco
+
+        #Botones------------------------------------------------------------------------------------------------------
+        pygame.draw.rect(ventana,AZUL,[160,150,265,30],2)            #Dibuja boton, lo cuadra segun el rectangulo ya creado
+        Texto1= FUENTE.render("Humano vs Humano",0,BLANCO)           #Texto del boton
+        pygame.draw.rect(ventana, AZUL, [135, 200, 310, 30], 2)      # Dibuja boton, lo cuadra segun el rectangulo ya creado
+        Texto2 = FUENTE.render("Humano vs Computador", 0, BLANCO)    # Texto del boton
+        pygame.draw.rect(ventana, AZUL, [250, 250, 85, 30], 2)
+        Texto3 = FUENTE.render("Salir",0,BLANCO)
+
+        ventana.blit(Texto1,(175,153))                         #Coloca el texto en la ventana
+        ventana.blit(Texto2,(150,203))                         #Coloca el texto en la ventana
+        ventana.blit(Texto3, (265, 253))                       #Coloca el texto en la ventana
 
         for event in pygame.event.get():                       #Eventos menu principal
             if event.type== QUIT:                              #Si se pulsa la "x"
