@@ -28,6 +28,7 @@ Principal = True                                  #Inicia con el menu principal
 FUENTE= pygame.font.Font(None,35)                 #Crea variable con la fuente que se va utilizar
 Imagen_titulo = pygame.image.load("Titulo.png")   #Crea la imagen para el titulo
 
+pygame.key.set_repeat(1, 100) #Instruccion que arregla la fluidez de la teclas
 while True:                                                    #Bucle principal
 
     if Principal:                                              #Si el usuario esta en la pantalla principal

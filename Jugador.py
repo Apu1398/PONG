@@ -34,28 +34,3 @@ class Jugador(pygame.sprite.Sprite):
             self.y-=direccion
 
         return matriz
-
-
-    # def tipo_Jugador(self, tipo_jugador):
-    #     "Metodo que elige si es jugador humano o AI"
-    #
-    #     if tipo_jugador==True:
-    #         self.movimiento_humano()
-    #     else:
-    #         self.movimiento_AI()
-
-    ##IMPORTANTE:
-    # Lo comento porque creo que con solo poner self.tipo_de_jugador en cualquier metodo ya se que tipo de jugador es
-
-    # def movimiento_humano(self):
-    #
-    #     "Metodo que le da movimiento al humano"
-    #
-    #     if self.dibujar_en_pantalla().bottom >=  LARGO_VENTANA:
-    #         self.dibujar_en_pantalla().bottom = LARGO_VENTANA
-    #     elif self.dibujar_en_pantalla().top <=0:
-    #         self.dibujar_en_pantalla().top = 0
-    #
-    # def movimiento_AI(self):
-    #     pass
-
