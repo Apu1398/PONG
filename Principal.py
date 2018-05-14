@@ -4,20 +4,16 @@ import pygame,sys
 from pygame.locals import *
 
 pygame.init()                                #Inicializa python
-ANCHO_VENNTANA=600
-LARGO_VENTANA=375
+ANCHO_VENNTANA=800
+LARGO_VENTANA=600
 ventana = pygame.display.set_mode((ANCHO_VENNTANA,LARGO_VENTANA)) #Tamaño de la ventana
 pygame.display.set_caption("PONG")           #Titulo de la ventana
 ventana.fill(pygame.Color(0,0,0))            #Color del fondo de la ventana(negro)
 
 juego=juego()
 matriz_principal = juego.crear_matriz(25,40)      #Crea la matriz de control
-
-jugador1= Jugador(0,7,9,True)
-jugador2= Jugador(39,7,9,False)
-
-matriz_principal=jugador1.dibujar(matriz_principal)
-matriz_principal=jugador2.dibujar(matriz_principal)
+#5matriz_principal
+jugador_humano1= Jugador(40, 20, 200,True, ventana )
 
 ALTO=15                                          #Constantes de la matriz de la interfaz
 ANCHO=15                                         #Constantes de la matriz de la interfaz
@@ -41,10 +37,8 @@ while True:                                  #Bucle principal
         if event.type== QUIT:                 #Si se pulsa la "x"
             pygame.quit()
             sys.exit()
-        if pygame.key.get_pressed()[KEYUP]:
-            matriz_principal=jugador2.moverse(matriz_principal, -1)
-        if pygame.key.get_pressed()[KEYDOWN]:
-            matriz_principal = jugador2.moverse(matriz_principal, 1)
+        elif event.type ==MOUSEBUTTONDOWN:      #Prueba con el mosueclick
+            matriz_principal[1][0] = 1
 
     pygame.display.update()                  #Actualiza la pantalla
 
