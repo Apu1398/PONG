@@ -10,20 +10,22 @@ ventana = pygame.display.set_mode((ANCHO_VENNTANA,LARGO_VENTANA)) #Tamaño de la
 pygame.display.set_caption("PONG")           #Titulo de la ventana
 ventana.fill(pygame.Color(0,0,0))            #Color del fondo de la ventana(negro)
 
-juego=juego()
-matriz_principal = juego.crear_matriz(25,40)      #Crea la matriz de control
-
-jugador1 = Jugador(0,7,9,True)
-jugador2 = Jugador(39,7,9,False)
-matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)
-matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)
+# juego=juego()  SE VA A USAR LUEGO PERROS
+# matriz_principal = juego.crear_matriz(25,40)      #Crea la matriz de control
+#
+# jugador1 = Jugador(0,7,9,True)
+# jugador2 = Jugador(39,7,9,False)
+# matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)
+# matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)
 
 ALTO=15                                          #Constantes de la matriz de la interfaz
 ANCHO=15                                         #Constantes de la matriz de la interfaz
 NEGRO = (0,0,0)                                  #Constantes de la matriz de la interfaz
 BLANCO = (255,255,255)                           #Constantes de la matriz de la interfaz
 
-Principal = True                                 #Inicia con el menu principal
+Principal_1 = True                               #Inicia con el menu principal
+Principal_2 = False                              #Indica cuando se va a utilizar la pantalla de escoger paletas
+
 FUENTE= pygame.font.Font(None,35)                #Crea variable con la fuente que se va utilizar
 Imagen_titulo = pygame.image.load("Titulo.png")  #Crea la imagen para el titulo
 sonido = pygame.mixer.Sound("menu_over.wav")     #Carga sonido para cuando el mouse se posicione sobre un boton
@@ -34,7 +36,7 @@ grosor3=2                                        #Tamaño del grosor utilizado p
 activo = False                                   #Variable para evitar que el sonido se repita varias veces
 
 while True:                                                    #Bucle principal
-    if Principal:                                              #Si el usuario esta en la pantalla principal
+    if Principal_1:                                              #Si el usuario esta en la pantalla principal
         ventana.fill(NEGRO)                                    #Rellena la pantalla para que dibuje sobre ella
 
         pygame.draw.rect(ventana,AZUL, [3,3,595,369], 15)      #Dibuja el marco
@@ -74,31 +76,40 @@ while True:                                                    #Bucle principal
             if event.type == MOUSEBUTTONDOWN:
                 if 160 <=  x_mouse <= 425 and 150<=y_mouse<=180 :
                     sonido.play()
-                    print("Boton 1")
+                    Principal_1=False
+                    Principal_2 = True
                 elif 135 <= x_mouse <= 444 and 200 <= y_mouse <= 230:
                     sonido.play()
-                    print("Boton 2")
+                    Principal_1 = False
+                    Principal_2 = True
                 elif 250 <= x_mouse <= 335 and 250 <= y_mouse <= 280:
                     sonido.play()
-                    print("Boton 3")
+                    pygame.quit()
+                    sys.exit()
 
+    elif Principal_2:
+        ventana.fill(NEGRO)                                    #Pone la pantalla en negro
+        for event in pygame.event.get():                       #Eventos menu principal
+            if event.type== QUIT:                              #Si se pulsa la "x"
+               pygame.quit()
+               sys.exit()
 
     else:                                              #Si no se esta sobre el menu principal, carga el campo de juegp
-        for i in range(25):                            #Bucle que actualiza la matriz dependiendo de la matriz principal
-            for j in range(40):
-                color = NEGRO                          #El color prederteminado sera el negro
-                if matriz_principal[i][j] == 1:        #Si hay un uno el cuadro será blanco
-                   color=BLANCO
-                pygame.draw.rect(ventana,color,[ALTO*j,ANCHO*i,ALTO,ANCHO],0)
+        # for i in range(25):                            #Bucle que actualiza la matriz dependiendo de la matriz principal
+        #     for j in range(40):
+        #         color = NEGRO                          #El color prederteminado sera el negro
+        #         if matriz_principal[i][j] == 1:        #Si hay un uno el cuadro será blanco
+        #            color=BLANCO
+        #         pygame.draw.rect(ventana,color,[ALTO*j,ANCHO*i,ALTO,ANCHO],0)
 
         for event in pygame.event.get():          #Eventos
             if event.type== QUIT:                 #Si se pulsa la "x"
                pygame.quit()
                sys.exit()
-            elif pygame.key.get_pressed()[K_UP]:
-               matriz_principal=jugador1.moverse(matriz_principal,-1)
-            elif pygame.key.get_pressed()[K_DOWN]:
-               matriz_principal = jugador1.moverse(matriz_principal,1)
+            # elif pygame.key.get_pressed()[K_UP]: SE VA A USAR LUEGO PERROS
+            #    matriz_principal=jugador1.moverse(matriz_principal,-1)
+            # elif pygame.key.get_pressed()[K_DOWN]:
+            #    matriz_principal = jugador1.moverse(matriz_principal,1)
 
 
 
