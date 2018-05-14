@@ -26,12 +26,16 @@ BLANCO = (255,255,255)                           #Constantes de la matriz de la 
 Principal = True                                 #Inicia con el menu principal
 FUENTE= pygame.font.Font(None,35)                #Crea variable con la fuente que se va utilizar
 Imagen_titulo = pygame.image.load("Titulo.png")  #Crea la imagen para el titulo
+sonido = pygame.mixer.Sound("menu_over.wav")     #Carga sonido para cuando el mouse se posicione sobre un boton
 AZUL= (16,94,205)                                #Color azul
-grosor1=2
-grosor2=2
-grosor3=2
+grosor1=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
+grosor2=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
+grosor3=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
+activo = False                                   #Variable para evitar que el sonido se repita varias veces
 
 while True:                                                    #Bucle principal
+
+
 
     if Principal:                                              #Si el usuario esta en la pantalla principal
         ventana.fill(NEGRO)                                    #Rellena la pantalla para que dibuje sobre ella
@@ -56,17 +60,26 @@ while True:                                                    #Bucle principal
         x_mouse,y_mouse = pygame.mouse.get_pos()
 
         if 160 <=  x_mouse <= 425 and 150<=y_mouse<=180 :             #Cambia el grosor del boton1
+            if not activo:
+                sonido.play()
+                activo=True
             grosor1 = 0
         elif 135 <=  x_mouse <= 444 and 200<=y_mouse<=230 :           #Cambia el grosor del boton2
+            if not activo:
+                sonido.play()
+                activo=True
             grosor2 = 0
         elif 250 <=  x_mouse <= 335 and 250<=y_mouse<=280 :           #Cambia el grosor del boton3
+            if not activo:
+                sonido.play()
+                activo=True
             grosor3 = 0
+
         else:                                                         #Vuelve a la normalidad
             grosor1=2
             grosor2 = 2
             grosor3 = 2
-
-
+            activo = False
         for event in pygame.event.get():                       #Eventos menu principal
             if event.type== QUIT:                              #Si se pulsa la "x"
                pygame.quit()
@@ -86,9 +99,9 @@ while True:                                                    #Bucle principal
                pygame.quit()
                sys.exit()
             elif pygame.key.get_pressed()[K_UP]:
-               matriz_principal=jugador2.moverse(matriz_principal,-1)
+               matriz_principal=jugador1.moverse(matriz_principal,-1)
             elif pygame.key.get_pressed()[K_DOWN]:
-               matriz_principal = jugador2.moverse(matriz_principal,1)
+               matriz_principal = jugador1.moverse(matriz_principal,1)
 
 
 
