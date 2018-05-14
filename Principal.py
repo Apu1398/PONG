@@ -34,9 +34,6 @@ grosor3=2                                        #Tamaño del grosor utilizado p
 activo = False                                   #Variable para evitar que el sonido se repita varias veces
 
 while True:                                                    #Bucle principal
-
-
-
     if Principal:                                              #Si el usuario esta en la pantalla principal
         ventana.fill(NEGRO)                                    #Rellena la pantalla para que dibuje sobre ella
 
@@ -56,34 +53,34 @@ while True:                                                    #Bucle principal
         ventana.blit(Texto3, (265, 253))                       #Coloca el texto en la ventana
 
         #Se identifica si el mouse esta dentro de los margenes de los botones-----------------------------------------------
-
         x_mouse,y_mouse = pygame.mouse.get_pos()
-
-        if 160 <=  x_mouse <= 425 and 150<=y_mouse<=180 :             #Cambia el grosor del boton1
-            if not activo:
-                sonido.play()
-                activo=True
+        if 160 <=  x_mouse <= 425 and 150<=y_mouse<=180 :             #Cambia el grosor boton 1
             grosor1 = 0
-        elif 135 <=  x_mouse <= 444 and 200<=y_mouse<=230 :           #Cambia el grosor del boton2
-            if not activo:
-                sonido.play()
-                activo=True
+        elif 135 <=  x_mouse <= 444 and 200<=y_mouse<=230 :           #Cambia el grosor boton 2
             grosor2 = 0
-        elif 250 <=  x_mouse <= 335 and 250<=y_mouse<=280 :           #Cambia el grosor del boton3
-            if not activo:
-                sonido.play()
-                activo=True
+        elif 250 <=  x_mouse <= 335 and 250<=y_mouse<=280 :           #Cambia el grosor del boton Salir
             grosor3 = 0
-
         else:                                                         #Vuelve a la normalidad
             grosor1=2
             grosor2 = 2
             grosor3 = 2
-            activo = False
+
+        #Eventos de la pantalla principal-----------------------------------------------------------------------------------
+
         for event in pygame.event.get():                       #Eventos menu principal
             if event.type== QUIT:                              #Si se pulsa la "x"
                pygame.quit()
                sys.exit()
+            if event.type == MOUSEBUTTONDOWN:
+                if 160 <=  x_mouse <= 425 and 150<=y_mouse<=180 :
+                    sonido.play()
+                    print("Boton 1")
+                elif 135 <= x_mouse <= 444 and 200 <= y_mouse <= 230:
+                    sonido.play()
+                    print("Boton 2")
+                elif 250 <= x_mouse <= 335 and 250 <= y_mouse <= 280:
+                    sonido.play()
+                    print("Boton 3")
 
 
     else:                                              #Si no se esta sobre el menu principal, carga el campo de juegp
