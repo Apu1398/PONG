@@ -6,5 +6,3 @@ class Bola(pygame.sprite.Sprite):
 
     def __int__(self):
         pygame.sprite.Sprite.__init__(self)
-
-
