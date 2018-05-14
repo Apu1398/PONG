@@ -26,13 +26,14 @@ BLANCO = (255,255,255)                           #Constantes de la matriz de la 
 
 Principal=True                                   #Inicia con el menu principal
 FUENTE= pygame.font.Font(None,35)                #Crea variable con la fuente que se va utilizar
-
+Imagen_titulo = pygame.image.load("Titulo.png")
 
 while True:                                                    #Bucle principal
 
     if Principal:                                              #Si el usuario esta en la pantalla principal
 
         pygame.draw.rect(ventana,AZUL, [3,3,595,369], 15)      #Dibuja el marco
+        ventana.blit(Imagen_titulo,(195,10))
 
         #Botones------------------------------------------------------------------------------------------------------
         pygame.draw.rect(ventana,AZUL,[160,150,265,30],2)            #Dibuja boton, lo cuadra segun el rectangulo ya creado
