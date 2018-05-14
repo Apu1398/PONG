@@ -7,8 +7,7 @@ class Bola:
     """Clase bola"""
 
     def __int__(self ,bola):
-
-        self.bola = bola
+        pass
 
     def dibujar_bola(self, bola, ventana):
         pygame.draw.ellipse(ventana, (255, 255, 255), bola)

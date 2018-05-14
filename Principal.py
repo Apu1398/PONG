@@ -44,7 +44,7 @@ while True:                                                    #Bucle principal
         pygame.draw.rect(ventana,AZUL,[160,150,265,30],2)            #Dibuja boton, lo cuadra segun el rectangulo ya creado
         Texto1= FUENTE.render("Humano vs Humano",0,BLANCO)           #Texto del boton
         pygame.draw.rect(ventana, AZUL, [135, 200, 310, 30], 2)      # Dibuja boton, lo cuadra segun el rectangulo ya creado
-        Texto2 = FUENTE.render("Humano vs Computador", 0, BLANCO)    # Texto del boton
+        Texto2 = FUENTE.rendzzzaer("Humano vs Computador", 0, BLANCO)    # Texto del boton
         pygame.draw.rect(ventana, AZUL, [250, 250, 85, 30], 2)
         Texto3 = FUENTE.render("Salir",0,BLANCO)
 
@@ -73,6 +73,10 @@ while True:                                                    #Bucle principal
                matriz_principal=jugador2.moverse(matriz_principal,-1)
             elif pygame.key.get_pressed()[K_DOWN]:
                matriz_principal = jugador2.moverse(matriz_principal,1)
+            elif pygame.key.get_pressed()[K_a]:
+               matriz_principal=jugador1.moverse(matriz_principal,-1)
+            elif pygame.key.get_pressed()[K_z]:
+               matriz_principal = jugador1.moverse(matriz_principal,1)
 
         ball.dibujar_bola(bola,ventana)
         ball.moverse_bola(bola, dx=2, dy=2)
