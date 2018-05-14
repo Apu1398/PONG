@@ -12,4 +12,5 @@ class Bola(pygame.sprite.Sprite):
         self.bola=bola
 
     def movimiento_bola(self):
-        if self.bola.y < self.bola.y >
+        if self.bola.y < self.bola.y >0:
+            pass

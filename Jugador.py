@@ -5,7 +5,7 @@ WHITE = (0,0,0)
 LARGO_VENTANA=800
 
 class Jugador(pygame.sprite.Sprite):
-    def __init__(self, x,y, tam_paleta, tipo_jugador, ventana):
+    def __init__(self, x,y, tam_paleta, Humano):
 
         """Clase Jugador"""
         pygame.sprite.Sprite.__init__(self)
@@ -13,36 +13,24 @@ class Jugador(pygame.sprite.Sprite):
         "Atributos"
 
         self.tam_paleta=tam_paleta
-        #self.cantidad_paleta=cantidad_paleta
-        self.tipo_jugador=tipo_jugador
+        self.Humano =Humano
         self.x=x
         self.y=y
-        self.ventana=ventana
-        self.abajo=0
-        self.arriba=LARGO_VENTANA
 
-    def dibujar_en_pantalla(self):
-        j1= pygame.Rect(self.x,self.y, 10, 200)
-        pygame.draw.rect(self.ventana, WHITE, j1)
+    def dibujar(self, matriz):
+        for i in range(self.y, self.y+self.tam_paleta):
+            matriz[i][self.x]=1
+        return matriz
 
-    def tipo_Jugador(self, tipo_jugador):
-        "Metodo que elige si es jugador humano o AI"
+    def moverse(self,matriz,direccion):
+        self.y+=direccion                                           #Direccion de movimiento
 
-        if tipo_jugador==True:
-            self.movimiento_humano()
+        if self.y >= 0 and (self.y + self.tam_paleta) <=25:
+            for i in range(0,25):                               #Iteracion que limpia la parte de la pantalla del juagdor
+             matriz[i][self.x] = 0
+            for i in range(self.y,self.y + self.tam_paleta):    #Pone en 1 la nueva posicion de la paleta
+               matriz[i][self.x]=1
         else:
-            self.movimiento_AI()
+            self.y-=direccion
 
-    def movimiento_humano(self):
-
-        "Metodo que le da movimiento al humano"
-
-        if self.dibujar_en_pantalla().bottom >=  LARGO_VENTANA:
-            self.dibujar_en_pantalla().bottom = LARGO_VENTANA
-        elif self.dibujar_en_pantalla().top <=0:
-            self.dibujar_en_pantalla().top = 0
-
-    def movimiento_AI(self):
-        pass
-
-
+        #return matriz
