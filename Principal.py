@@ -21,26 +21,38 @@ matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)
 ALTO=15                                          #Constantes de la matriz de la interfaz
 ANCHO=15                                         #Constantes de la matriz de la interfaz
 NEGRO = (0,0,0)                                  #Constantes de la matriz de la interfaz
+AZUL= (16,94,205)
 BLANCO = (255,255,255)                           #Constantes de la matriz de la interfaz
 
-while True:                                  #Bucle principal
+Principal=True                                   #Inicia con el menu principal
 
-    for i in range(25):                      #Bucle que actualiza la matriz dependiendo de la matriz principal
 
-        for j in range(40):
-            color = NEGRO                           #El color prederteminado sera el negro
-            if matriz_principal[i][j] == 1:           #Si hay un uno el cuadro será blanco
-                color=BLANCO
-            pygame.draw.rect(ventana,color,[ALTO*j,ANCHO*i,ALTO,ANCHO],1)
+while True:                                                    #Bucle principal
 
-    for event in pygame.event.get():          #Eventos
-        if event.type== QUIT:                 #Si se pulsa la "x"
-            pygame.quit()
-            sys.exit()
-        elif pygame.key.get_pressed()[K_UP]:
-            matriz_principal=jugador2.moverse(matriz_principal,-1)
-        elif pygame.key.get_pressed()[K_DOWN]:
-            matriz_principal = jugador2.moverse(matriz_principal,1)
+    if Principal:                                              #Si el usuario esta en la pantalla principal
+        pygame.draw.rect(ventana,AZUL, [3,3,595,369], 15)      #Dibuja el marco
+
+        for event in pygame.event.get():                       #Eventos menu principal
+            if event.type== QUIT:                              #Si se pulsa la "x"
+               pygame.quit()
+               sys.exit()
+
+    else:
+        for i in range(25):                      #Bucle que actualiza la matriz dependiendo de la matriz principal
+            for j in range(40):
+                color = NEGRO                          #El color prederteminado sera el negro
+                if matriz_principal[i][j] == 1:           #Si hay un uno el cuadro será blanco
+                   color=BLANCO
+                pygame.draw.rect(ventana,color,[ALTO*j,ANCHO*i,ALTO,ANCHO],1)
+
+        for event in pygame.event.get():          #Eventos
+            if event.type== QUIT:                 #Si se pulsa la "x"
+               pygame.quit()
+               sys.exit()
+            elif pygame.key.get_pressed()[K_UP]:
+               matriz_principal=jugador2.moverse(matriz_principal,-1)
+            elif pygame.key.get_pressed()[K_DOWN]:
+               matriz_principal = jugador2.moverse(matriz_principal,1)
 
 
 
