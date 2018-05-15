@@ -161,8 +161,9 @@ while True:                                                    #Bucle principal
                         jugador2 = Jugador(39,2,9,False,2)                                 #Crea al jugador 2 con dos paletas
                         matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  # Dibuja el juagdor 1
                         matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  # Dibuja el jugador 2
-                    elif cantidad_jugadores == 2:                                         # Verifica cual fue la seleccion del usuario
-                        jugador1 = Jugador(0, 2, 9, True, 2)                              # Crea jugador 1
+
+                    elif cantidad_jugadores == 2:                                          # Verifica cual fue la seleccion del usuario
+                        jugador1 = Jugador(0, 2, 9, True, 2)                               # Crea jugador 1
                         jugador2 = Jugador(39, 2, 9, True, 2)                              # Crea jugador 2
                         matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  # Dibuja el juagdor 1
                         matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  # Dibuja el jugador 2
@@ -190,10 +191,16 @@ while True:                                                    #Bucle principal
              if event.type== QUIT:                 #Si se pulsa la "x"
                pygame.quit()
                sys.exit()
-             elif pygame.key.get_pressed()[K_UP]:
+             elif pygame.key.get_pressed()[K_w]:
                 jugador1.moverse(matriz_principal,-1)
-             elif pygame.key.get_pressed()[K_DOWN]:
+             elif pygame.key.get_pressed()[K_s]:
                 jugador1.moverse(matriz_principal,1)
+             elif pygame.key.get_pressed()[K_UP]:
+                 if cantidad_jugadores == 2:
+                     jugador2.moverse(matriz_principal,-1)
+             elif pygame.key.get_pressed()[K_DOWN]:
+                 if cantidad_jugadores == 2:
+                     jugador2.moverse(matriz_principal,1)
 
          reloj = pygame.time.Clock()                       #Varia la velocidad del juego
          tiempo = reloj.tick(25)                           #Varia la velocidad del juego
