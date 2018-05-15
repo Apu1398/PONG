@@ -12,7 +12,10 @@ class juego:
         for filas in range(n):
             self.matriz.append([])
             for columnas in range(m):
-                self.matriz[filas].append(0)
+                if filas == 0 or filas ==24:
+                    self.matriz[filas].append(1)
+                else:
+                    self.matriz[filas].append(0)
         return self.matriz
 
 # juego1=juego()
