@@ -10,6 +10,7 @@ LARGO_VENTANA=375
 ventana = pygame.display.set_mode((ANCHO_VENNTANA,LARGO_VENTANA)) #Tamaño de la ventana
 pygame.display.set_caption("PONG")           #Titulo de la ventana
 ventana.fill(pygame.Color(0,0,0))            #Color del fondo de la ventana(negro)
+pygame.key.set_repeat(1, 100)                #Instruccion que arregla la fluidez de la teclas
 
 juego=juego()                                     #Llama a la clase juego
 matriz_principal = juego.crear_matriz(25,40)      #Crea la matriz de control
