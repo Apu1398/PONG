@@ -33,7 +33,6 @@ AZUL= (16,94,205)                                #Color azul
 grosor1=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 grosor2=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 grosor3=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
-activo = False                                   #Variable para evitar que el sonido se repita varias veces
 
 while True:                                                    #Bucle principal
     if Principal_1:                                              #Si el usuario esta en la pantalla principal
@@ -54,16 +53,16 @@ while True:                                                    #Bucle principal
         ventana.blit(Texto2,(150,203))                         #Coloca el texto en la ventana
         ventana.blit(Texto3, (265, 253))                       #Coloca el texto en la ventana
 
-        #Se identifica si el mouse esta dentro de los margenes de los botones-----------------------------------------------
-        x_mouse,y_mouse = pygame.mouse.get_pos()
-        if 160 <=  x_mouse <= 425 and 150<=y_mouse<=180 :             #Cambia el grosor boton 1
+        # Se identifica si el mouse esta dentro de los margenes de los botones-----------------------------------------------
+        x_mouse, y_mouse = pygame.mouse.get_pos()
+        if 160 <= x_mouse <= 425 and 150 <= y_mouse <= 180:  # Cambia el grosor boton 1
             grosor1 = 0
-        elif 135 <=  x_mouse <= 444 and 200<=y_mouse<=230 :           #Cambia el grosor boton 2
+        elif 135 <= x_mouse <= 444 and 200 <= y_mouse <= 230:  # Cambia el grosor boton 2
             grosor2 = 0
-        elif 250 <=  x_mouse <= 335 and 250<=y_mouse<=280 :           #Cambia el grosor del boton Salir
+        elif 250 <= x_mouse <= 335 and 250 <= y_mouse <= 280:  # Cambia el grosor del boton Salir
             grosor3 = 0
-        else:                                                         #Vuelve a la normalidad
-            grosor1=2
+        else:  # Vuelve a la normalidad
+            grosor1 = 2
             grosor2 = 2
             grosor3 = 2
 
@@ -76,25 +75,79 @@ while True:                                                    #Bucle principal
             if event.type == MOUSEBUTTONDOWN:
                 if 160 <=  x_mouse <= 425 and 150<=y_mouse<=180 :
                     sonido.play()
+                    grosor1 = 2
                     Principal_1=False
                     Principal_2 = True
                 elif 135 <= x_mouse <= 444 and 200 <= y_mouse <= 230:
                     sonido.play()
+                    grosor2 = 2
                     Principal_1 = False
                     Principal_2 = True
                 elif 250 <= x_mouse <= 335 and 250 <= y_mouse <= 280:
                     sonido.play()
+                    grosor3 = 2
                     pygame.quit()
                     sys.exit()
 
     elif Principal_2:
         ventana.fill(NEGRO)                                    #Pone la pantalla en negro
-        for event in pygame.event.get():                       #Eventos menu principal
+
+        pygame.draw.rect(ventana, AZUL, [3, 3, 595, 369], 15)  # Dibuja el marco
+        ventana.blit(Imagen_titulo, (195, 10))                 # Posiciona el titulo a la ventana
+
+        # Botones------------------------------------------------------------------------------------------------------
+        pygame.draw.rect(ventana, AZUL, [200, 150, 180, 30],grosor1)       # Dibuja boton, lo cuadra segun el rectangulo ya creado
+        Texto1 = FUENTE.render("Una paleta", 0, BLANCO)                    # Texto del boton
+        pygame.draw.rect(ventana, AZUL, [200, 200, 180, 30], grosor2)      # Dibuja boton, lo cuadra segun el rectangulo ya creado
+        Texto2 = FUENTE.render("Dos paletas", 0, BLANCO)                   # Texto del boton
+        pygame.draw.rect(ventana, AZUL, [235, 250, 100, 30],grosor3)        # Dibuja boton, lo cuadra segun el rectangulo ya creado
+        Texto3 = FUENTE.render("Volver", 0, BLANCO)                        # Texto del boton
+
+        ventana.blit(Texto1, (225, 153))  # Coloca el texto en la ventana
+        ventana.blit(Texto2, (225, 203))  # Coloca el texto en la ventana
+        ventana.blit(Texto3, (250, 253))  # Coloca el texto en la ventana
+
+
+        x_mouse,y_mouse = pygame.mouse.get_pos()
+
+        # Se identifica si el mouse esta dentro de los margenes de los botones-----------------------------------------------
+        x_mouse, y_mouse = pygame.mouse.get_pos()
+        if 200 <= x_mouse <= 380 and  150<= y_mouse <= 180:               #Cambia el grosor boton 1
+            grosor1 = 0
+        elif 200 <= x_mouse <= 390 and 200 <= y_mouse <= 230:             #Cambia el grosor boton 2
+            grosor2 = 0
+        elif 235 <= x_mouse <= 335 and 250 <= y_mouse <= 280:             #Cambia el grosor del boton Salir
+            grosor3 = 0
+        else:                                                             #Vuelve a la normalidad
+            grosor1 = 2
+            grosor2 = 2
+            grosor3 = 2
+
+
+        for event in pygame.event.get():                       #Eventos menu principal_2
             if event.type== QUIT:                              #Si se pulsa la "x"
                pygame.quit()
                sys.exit()
+            if event.type == MOUSEBUTTONDOWN:
+                if 200 <=  x_mouse <= 380 and 150<=y_mouse<=180:
+                    sonido.play()
+                    Principal_2=False
+                    ventana.fill(NEGRO)
+                    grosor1 = 2
+                elif 200<= x_mouse <= 380 and 200 <= y_mouse <= 230:
+                    sonido.play()
+                    Principal_2 = False
+                    ventana.fill(NEGRO)
+                    grosor2 = 2
+                elif 235 <= x_mouse <= 335 and 250 <= y_mouse <= 280:
+                    sonido.play()
+                    grosor3 = 2
+                    Principal_2 = False
+                    Principal_1 = True
 
-    else:                                              #Si no se esta sobre el menu principal, carga el campo de juegp
+
+    else:                                              #Si no se esta sobre el menu principal, carga el campo de juego
+
         # for i in range(25):                            #Bucle que actualiza la matriz dependiendo de la matriz principal
         #     for j in range(40):
         #         color = NEGRO                          #El color prederteminado sera el negro
