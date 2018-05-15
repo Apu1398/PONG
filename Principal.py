@@ -1,7 +1,8 @@
 from Jugador import *
 from Juego import *
-import pygame,sys
+import pygame
 from pygame.locals import *
+import sys
 from Bola import *
 
 pygame.init()                                #Inicializa python
@@ -44,7 +45,7 @@ while True:                                                    #Bucle principal
         pygame.draw.rect(ventana,AZUL,[160,150,265,30],2)            #Dibuja boton, lo cuadra segun el rectangulo ya creado
         Texto1= FUENTE.render("Humano vs Humano",0,BLANCO)           #Texto del boton
         pygame.draw.rect(ventana, AZUL, [135, 200, 310, 30], 2)      # Dibuja boton, lo cuadra segun el rectangulo ya creado
-        Texto2 = FUENTE.rendzzzaer("Humano vs Computador", 0, BLANCO)    # Texto del boton
+        Texto2 = FUENTE.render("Humano vs Computador", 0, BLANCO)    # Texto del boton
         pygame.draw.rect(ventana, AZUL, [250, 250, 85, 30], 2)
         Texto3 = FUENTE.render("Salir",0,BLANCO)
 

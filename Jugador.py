@@ -9,7 +9,6 @@ class Jugador:
 
         """Clase Jugador"""
 
-
         "Atributos"
         self.tam_paleta=tam_paleta
         self.Humano=Humano
