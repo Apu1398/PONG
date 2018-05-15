@@ -88,11 +88,11 @@ while True:                                                    #Bucle principal
                     Principal_2 = True                                 #Pasa a la segunda pantalla
                     cantidad_jugadores = 1                             #Define la cantidad de jugadores
 
-                elif 250 <= x_mouse <= 335 and 250 <= y_mouse <= 280:
-                    sonido.play()
-                    grosor3 = 2
-                    pygame.quit()
-                    sys.exit()
+                elif 250 <= x_mouse <= 335 and 250 <= y_mouse <= 280:  #Se pulsa el boton Salir
+                    sonido.play()                                      #Reproduce sonido
+                    grosor3 = 2                                        #Vuelve el grosor a la normalidad
+                    pygame.quit()                                      #Se sale del juego
+                    sys.exit()                                         #Termina la aplicacion
 
     elif Principal_2:
         ventana.fill(NEGRO)                                    #Pone la pantalla en negro
@@ -144,6 +144,11 @@ while True:                                                    #Bucle principal
                         jugador2 = Jugador(39,7,9,False,1)                  #Crea jugador 2
                         matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal) #Dibuja el juagdor 1
                         matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal) #Dibuja el jugador 2
+                    elif cantidad_jugadores == 2:                                         # Verifica cual fue la seleccion del usuario
+                        jugador1 = Jugador(0, 7, 9, True, 1)                              # Crea jugador 1
+                        jugador2 = Jugador(39, 7, 9, True, 1)                              # Crea jugador 2
+                        matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  # Dibuja el juagdor 1
+                        matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  # Dibuja el jugador 2
 
                 elif 200<= x_mouse <= 380 and 200 <= y_mouse <= 230:        #Clic sobre el boton dos paletas
                     sonido.play()
@@ -187,6 +192,7 @@ while True:                                                    #Bucle principal
 
          reloj = pygame.time.Clock()                       #Varia la velocidad del juego
          tiempo = reloj.tick(25)                           #Varia la velocidad del juego
+
 
 
     pygame.display.update()                  #Actualiza la pantalla
