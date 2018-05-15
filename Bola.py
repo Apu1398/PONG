@@ -26,26 +26,12 @@ class Bola:
             matriz[self.pos_x][self.pos_y-1]=0
             self.pos_y=20
             self.direccion = -self.direccion
-
-
         elif matriz[self.pos_x][self.pos_y] == 1:
             self.direccion = -self.direccion
             self.pos_y += self.direccion
             matriz[self.pos_x][self.pos_y] = 1
-
         else:
             matriz[self.pos_x][(self.pos_y)-self.direccion] = 0
             matriz[self.pos_x][self.pos_y] = 1
 
         return matriz
-
-
-
-        # (bola).move_ip(dx, dy)
-        #
-        # if (bola).y < 0 or (bola).y > 25:
-        #     dy*=-1
-        # if (bola).x < 0 or (bola).x > 40:
-        #     dx*=-1
-
-
