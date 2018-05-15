@@ -5,22 +5,22 @@ from pygame.locals import *
 from Bola import *
 
 pygame.init()                                #Inicializa python
-ANCHO_VENNTANA=600
-LARGO_VENTANA=375
+ANCHO_VENNTANA = 600
+LARGO_VENTANA = 375
 ventana = pygame.display.set_mode((ANCHO_VENNTANA,LARGO_VENTANA)) #Tamaño de la ventana
 pygame.display.set_caption("PONG")           #Titulo de la ventana
 ventana.fill(pygame.Color(0,0,0))            #Color del fondo de la ventana(negro)
 pygame.key.set_repeat(1, 100)                #Instruccion que arregla la fluidez de la teclas
 
-juego=juego()                                     #Llama a la clase juego
+juego = juego()                                     #Llama a la clase juego
 matriz_principal = juego.crear_matriz(25,40)      #Crea la matriz de control
 BALL = Bola(10,20,-1)
 
 
-ALTO=15                                          #Constantes de la matriz de la interfaz
-ANCHO=15                                         #Constantes de la matriz de la interfaz
+ALTO = 15                                          #Constantes de la matriz de la interfaz
+ANCHO = 15                                         #Constantes de la matriz de la interfaz
 NEGRO = (0,0,0)                                  #Constantes de la matriz de la interfaz
-AZUL= (16,94,205)                                #Constantes de la matriz de la interfaz
+AZUL = (16,94,205)                                #Constantes de la matriz de la interfaz
 BLANCO = (255,255,255)                           #Constantes de la matriz de la interfaz
 
 Principal_1 = True                               #Inicia con el menu principal
@@ -29,7 +29,7 @@ Principal_2 = False                              #Indica cuando se va a utilizar
 FUENTE= pygame.font.Font(None,35)                #Crea variable con la fuente que se va utilizar
 Imagen_titulo = pygame.image.load("Titulo.png")  #Crea la imagen para el titulo
 sonido = pygame.mixer.Sound("menu_over.wav")     #Carga sonido para cuando el mouse se posicione sobre un boton
-AZUL= (16,94,205)                                #Color azul
+AZUL = (16,94,205)                                #Color azul
 grosor1=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 grosor2=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 grosor3=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
@@ -150,7 +150,13 @@ while True:                                                    #Bucle principal
                     Principal_2 = False
                     ventana.fill(NEGRO)
                     grosor2 = 2
-                    cantidad_paletas = 2
+
+                    if cantidad_jugadores == 1:
+                        jugador1 = Jugador(0,2,9,True,2)                                   #Crea al jugador 1 con dos paletas
+                        jugador2 = Jugador(39,2,9,False,2)                                 #Crea al jugador 2 con dos paletas
+                        matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  # Dibuja el juagdor 1
+                        matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  # Dibuja el jugador 2
+
                 elif 235 <= x_mouse <= 335 and 250 <= y_mouse <= 280:       #Clic sobre el boton volver
                     sonido.play()
                     grosor3 = 2

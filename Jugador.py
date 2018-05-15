@@ -7,9 +7,15 @@ class Jugador():
         self.Humano = Humano
         self.cantidad_paletas = cantidad_paletas
 
-    def dibujar_en_pantalla(self,matriz):
-        for i in range(self.y,self.y+self.tam_paleta):
-            matriz[i][self.x]=1
+    def dibujar_en_pantalla(self, matriz):
+        if self.cantidad_paletas == 1:                         #Si la cantidad de paletas es 1
+            for i in range(self.y, self.y+self.tam_paleta):
+                matriz[i][self.x] = 1
+        else:
+            for i in range (self.y, self.y + self.tam_paleta): #Si la cantidad de paletas es 2
+                matriz[i][self.x] = 1
+            for i in range (self.y + self.tam_paleta + 2, (self.y + self.tam_paleta + 2) + self.tam_paleta):  #Establece los margenes para la segunda paleta
+                matriz[i][self.x] = 1
         return matriz
 
     def moverse(self,matriz,direccion):
