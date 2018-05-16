@@ -11,6 +11,7 @@ class Bola:
         self.direccion = direccion
         self.pos_x = pos_x
         self.pos_y = pos_y
+        self.velocidad=[3,3]
 
     def dibujar_bola(self,matriz):
         matriz[self.pos_x][self.pos_y]=1
@@ -23,6 +24,7 @@ class Bola:
 
         if self.pos_y == 40:                          #Si la posicion es 40 la puntuacion cambia
             print("Punto")
+            self.speed[0]= -self.velocidad[0]
             matriz[self.pos_x][self.pos_y-1]=0        #Pone en 0 la posicion en la que estaba la bola...
             self.pos_y=20                             #Para luego ponerla en el medio
             self.direccion = -self.direccion          #La bola iría en direccion contraria
