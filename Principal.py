@@ -202,6 +202,8 @@ while True:                                                    #Bucle principal
                  if cantidad_jugadores == 2:
                      jugador2.moverse(matriz_principal,1)
 
+         print(jugador1.get_posicion())                    #Obtiene la posicion del jugador dividida
+
          reloj = pygame.time.Clock()                       #Varia la velocidad del juego
          tiempo = reloj.tick(25)                           #Varia la velocidad del juego
 

@@ -43,6 +43,12 @@ class Jugador():
 
         return matriz
 
+    def get_posicion(self):           #Funcion que retorna la posicion del jugador divida
+        tupla_pos = (self.y,self.y+3),(self.y+3,self.y+6),(self.y+6,self.y+9)
+        return tupla_pos
+
+
+
 
     # def tipo_Jugador(self, tipo_jugador):
     #     "Metodo que elige si es jugador humano o AI"
