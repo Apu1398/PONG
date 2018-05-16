@@ -52,4 +52,4 @@ class Bola:
             matriz[self.pos_x][(self.pos_y)-self.direccion] = 0  #Primero "apaga el cuadrante anterior"
             matriz[self.pos_x][self.pos_y] = 1                   #"Enciende el siguiente cuadrante
 
-        return matriz                                            #Retorna la matriz
+        return matriz                                            #Retorna la matriz   m
