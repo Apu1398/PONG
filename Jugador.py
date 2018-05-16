@@ -4,12 +4,14 @@ WHITE = (0,0,0)
 
 LARGO_VENTANA=800
 
-class Jugador:
+class Jugador(pygame.sprite.Sprite):
     def __init__(self, x,y,tam_paleta,Humano):
 
         """Clase Jugador"""
+        pygame.sprite.Sprite.__init__(self)
 
         "Atributos"
+
         self.tam_paleta=tam_paleta
         self.Humano=Humano
         self.x=x

@@ -1,9 +1,7 @@
 from Jugador import *
 from Juego import *
-import pygame
+import pygame,sys
 from pygame.locals import *
-import sys
-from Bola import *
 
 pygame.init()                                #Inicializa python
 ANCHO_VENNTANA=600
@@ -19,8 +17,6 @@ jugador1 = Jugador(0,7,9,True)
 jugador2 = Jugador(39,7,9,False)
 matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)
 matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)
-bola=Rect(100,200,30,30)
-ball= Bola()
 
 ALTO=15                                          #Constantes de la matriz de la interfaz
 ANCHO=15                                         #Constantes de la matriz de la interfaz
@@ -28,12 +24,11 @@ NEGRO = (0,0,0)                                  #Constantes de la matriz de la 
 AZUL= (16,94,205)
 BLANCO = (255,255,255)                           #Constantes de la matriz de la interfaz
 
-Principal = False                                  #Inicia con el menu principal
+Principal = True                                  #Inicia con el menu principal
 FUENTE= pygame.font.Font(None,35)                 #Crea variable con la fuente que se va utilizar
 Imagen_titulo = pygame.image.load("Titulo.png")   #Crea la imagen para el titulo
 
 pygame.key.set_repeat(1, 100) #Instruccion que arregla la fluidez de la teclas
-
 while True:                                                    #Bucle principal
 
     if Principal:                                              #Si el usuario esta en la pantalla principal
@@ -74,13 +69,8 @@ while True:                                                    #Bucle principal
                matriz_principal=jugador2.moverse(matriz_principal,-1)
             elif pygame.key.get_pressed()[K_DOWN]:
                matriz_principal = jugador2.moverse(matriz_principal,1)
-            elif pygame.key.get_pressed()[K_a]:
-               matriz_principal=jugador1.moverse(matriz_principal,-1)
-            elif pygame.key.get_pressed()[K_z]:
-               matriz_principal = jugador1.moverse(matriz_principal,1)
 
-        ball.dibujar_bola(bola,ventana)
-        ball.moverse_bola(bola, dx=2, dy=2)
+
 
     pygame.display.update()                  #Actualiza la pantalla
 
