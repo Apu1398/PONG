@@ -178,8 +178,9 @@ while True:                                                    #Bucle principal
     else:                                              #Si no se esta sobre el menu principal, carga el campo de juego
 
          tupla_jugador1 = jugador1.get_posicion()
+         tupla_jugador2 = jugador2.get_posicion()
          BALL.dibujar_bola(matriz_principal)
-         BALL.moverse_bola(matriz_principal,tupla_jugador1)
+         BALL.moverse_bola(matriz_principal,tupla_jugador1,tupla_jugador2)
 
          for i in range(25):                            #Bucle que actualiza la matriz dependiendo de la matriz principal
              for j in range(40):

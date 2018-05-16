@@ -17,6 +17,3 @@ class juego:
                 else:
                     self.matriz[filas].append(0)
         return self.matriz
-
-
-
