@@ -17,7 +17,7 @@ class Bola:
         return matriz
 
 
-    def moverse_bola(self, matriz):
+    def moverse_bola(self, matriz,tupla):
 
         self.pos_y += self.direccion                  #Siempre le suma o le resta a la posicion y que tenga actualamente
 
@@ -34,6 +34,14 @@ class Bola:
             self.direccion = -self.direccion          #La bola iría en direccion contraria
 
         elif matriz[self.pos_x][self.pos_y] == 1:     #Si la siguiente posicion es 1 la bola "Rebota"
+
+            if self.pos_x in range(tupla[0][0],tupla[0][1]) and self.pos_y == 0:
+                print("Pego en la primera parte")
+            elif self.pos_x in range(tupla[1][0],tupla[1][1]) and self.pos_y == 0:
+                print ("Pego en la segunda parte")
+            elif self.pos_x in range(tupla[2][0],tupla[2][1]) and self.pos_y == 0:
+                print("Pego en la tercer parte")
+
             self.direccion = -self.direccion          #Por eso se le cambia la dirección
             self.pos_y += self.direccion              #Se aumenta o disminuye la posicion en y
             matriz[self.pos_x][self.pos_y] = 1        #La bola se mueve para el lado contrario

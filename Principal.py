@@ -14,7 +14,7 @@ pygame.key.set_repeat(1, 100)                #Instruccion que arregla la fluidez
 
 juego = juego()                                     #Llama a la clase juego
 matriz_principal = juego.crear_matriz(25,40)      #Crea la matriz de control
-BALL = Bola(10,20,-1)
+BALL = Bola(13,20,-1)
 
 
 ALTO = 15                                          #Constantes de la matriz de la interfaz
@@ -177,8 +177,9 @@ while True:                                                    #Bucle principal
 
     else:                                              #Si no se esta sobre el menu principal, carga el campo de juego
 
+         tupla_jugador1 = jugador1.get_posicion()
          BALL.dibujar_bola(matriz_principal)
-         BALL.moverse_bola(matriz_principal)
+         BALL.moverse_bola(matriz_principal,tupla_jugador1)
 
          for i in range(25):                            #Bucle que actualiza la matriz dependiendo de la matriz principal
              for j in range(40):
@@ -201,9 +202,6 @@ while True:                                                    #Bucle principal
              elif pygame.key.get_pressed()[K_DOWN]:
                  if cantidad_jugadores == 2:
                      jugador2.moverse(matriz_principal,1)
-
-         print(jugador1.get_posicion())                    #Obtiene la posicion del jugador dividida
-
          reloj = pygame.time.Clock()                       #Varia la velocidad del juego
          tiempo = reloj.tick(25)                           #Varia la velocidad del juego
 
