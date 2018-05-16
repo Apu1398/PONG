@@ -14,7 +14,7 @@ pygame.key.set_repeat(1, 100)                #Instruccion que arregla la fluidez
 
 juego = juego()                                     #Llama a la clase juego
 matriz_principal = juego.crear_matriz(25,40)      #Crea la matriz de control
-BALL = Bola(13,20,-1)
+BALL = Bola(13,20,-1,-1)
 
 
 ALTO = 15                                          #Constantes de la matriz de la interfaz
