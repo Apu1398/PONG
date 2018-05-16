@@ -8,20 +8,20 @@ pygame.init()                                #Inicializa python
 ANCHO_VENNTANA = 600
 LARGO_VENTANA = 375
 ventana = pygame.display.set_mode((ANCHO_VENNTANA,LARGO_VENTANA)) #Tamaño de la ventana
-pygame.display.set_caption("PONG")           #Titulo de la ventana
-ventana.fill(pygame.Color(0,0,0))            #Color del fondo de la ventana(negro)
-pygame.key.set_repeat(1, 100)                #Instruccion que arregla la fluidez de la teclas
+pygame.display.set_caption("PONG")                                #Titulo de la ventana
+ventana.fill(pygame.Color(0,0,0))                                 #Color del fondo de la ventana(negro)
+pygame.key.set_repeat(1, 100)                                     #Instruccion que arregla la fluidez de la teclas
 
-juego = juego()                                     #Llama a la clase juego
-matriz_principal = juego.crear_matriz(25,40)      #Crea la matriz de control
+juego = juego()                                                   #Llama a la clase juego
+matriz_principal = juego.crear_matriz(25,40)                      #Crea la matriz de control
 BALL = Bola(13,20,-1,-1)
 
 
 ALTO = 15                                          #Constantes de la matriz de la interfaz
 ANCHO = 15                                         #Constantes de la matriz de la interfaz
-NEGRO = (0,0,0)                                  #Constantes de la matriz de la interfaz
-AZUL = (16,94,205)                                #Constantes de la matriz de la interfaz
-BLANCO = (255,255,255)                           #Constantes de la matriz de la interfaz
+NEGRO = (0,0,0)                                    #Constantes de la matriz de la interfaz
+AZUL = (16,94,205)                                 #Constantes de la matriz de la interfaz
+BLANCO = (255,255,255)                             #Constantes de la matriz de la interfaz
 
 Principal_1 = True                               #Inicia con el menu principal
 Principal_2 = False                              #Indica cuando se va a utilizar la pantalla de escoger paletas
@@ -29,7 +29,7 @@ Principal_2 = False                              #Indica cuando se va a utilizar
 FUENTE= pygame.font.Font(None,35)                #Crea variable con la fuente que se va utilizar
 Imagen_titulo = pygame.image.load("Titulo.png")  #Crea la imagen para el titulo
 sonido = pygame.mixer.Sound("menu_over.wav")     #Carga sonido para cuando el mouse se posicione sobre un boton
-AZUL = (16,94,205)                                #Color azul
+AZUL = (16,94,205)                               #Color azul
 grosor1=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 grosor2=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 grosor3=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
@@ -45,9 +45,9 @@ while True:                                                    #Bucle principal
 
         #Botones------------------------------------------------------------------------------------------------------
         pygame.draw.rect(ventana,AZUL,[160,150,265,30],grosor1)                #Dibuja boton, lo cuadra segun el rectangulo ya creado
-        Texto1= FUENTE.render("Humano vs Humano",0,BLANCO)               #Texto del boton
+        Texto1= FUENTE.render("Humano vs Humano",0,BLANCO)                     #Texto del boton
         pygame.draw.rect(ventana, AZUL, [135, 200, 310, 30], grosor2)          # Dibuja boton, lo cuadra segun el rectangulo ya creado
-        Texto2 = FUENTE.render("Humano vs Computador", 0, BLANCO)    # Texto del boton
+        Texto2 = FUENTE.render("Humano vs Computador", 0, BLANCO)              # Texto del boton
         pygame.draw.rect(ventana, AZUL, [250, 250, 85, 30], grosor3)
         Texto3 = FUENTE.render("Salir",0,BLANCO)
 
@@ -143,10 +143,10 @@ while True:                                                    #Bucle principal
                     if cantidad_jugadores==1:                               #Verifica cual fue la seleccion del usuario
                         jugador1 = Jugador(0,7,9,True,1)                    #Crea jugador 1
                         jugador2 = Jugador(39,7,9,False,1)                  #Crea jugador 2
-                        matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal) #Dibuja el juagdor 1
-                        matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal) #Dibuja el jugador 2
-                    elif cantidad_jugadores == 2:                                         # Verifica cual fue la seleccion del usuario
-                        jugador1 = Jugador(0, 7, 9, True, 1)                              # Crea jugador 1
+                        matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  #Dibuja el juagdor 1
+                        matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  #Dibuja el jugador 2
+                    elif cantidad_jugadores == 2:                                          # Verifica cual fue la seleccion del usuario
+                        jugador1 = Jugador(0, 7, 9, True, 1)                               # Crea jugador 1
                         jugador2 = Jugador(39, 7, 9, True, 1)                              # Crea jugador 2
                         matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  # Dibuja el juagdor 1
                         matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  # Dibuja el jugador 2
@@ -178,34 +178,34 @@ while True:                                                    #Bucle principal
 
     else:                                              #Si no se esta sobre el menu principal, carga el campo de juego
 
-         tupla_jugador1 = jugador1.get_posicion()
-         tupla_jugador2 = jugador2.get_posicion()
+         tupla_jugador1 = jugador1.get_posicion()                            #Obtiene las sublistas de cada jugador, dependiendo de la posicion
+         tupla_jugador2 = jugador2.get_posicion()                            #Obtiene las sublistas de cada jugador, dependiendo de la posicion
          BALL.dibujar_bola(matriz_principal)
-         BALL.moverse_bola(matriz_principal,tupla_jugador1,tupla_jugador2)
+         BALL.moverse_bola(matriz_principal,tupla_jugador1,tupla_jugador2)   #Mueve la bola, necesita los argumentos para determinar su comportamiento
 
          for i in range(25):                            #Bucle que actualiza la matriz dependiendo de la matriz principal
              for j in range(40):
                  color = NEGRO                          #El color prederteminado sera el negro
                  if matriz_principal[i][j] == 1:        #Si hay un uno el cuadro será blanco
                     color= AZUL
-                 pygame.draw.rect(ventana,color,[ALTO*j,ANCHO*i,ALTO,ANCHO],0)
+                 pygame.draw.rect(ventana,color,[ALTO*j,ANCHO*i,ALTO,ANCHO],0) #Dibuja cada cuadro
 
          for event in pygame.event.get():          #Eventos
              if event.type== QUIT:                 #Si se pulsa la "x"
                pygame.quit()
                sys.exit()
-             elif pygame.key.get_pressed()[K_w]:
+             elif pygame.key.get_pressed()[K_w]:      #Si se pulsa la w
                 jugador1.moverse(matriz_principal,-1)
-             elif pygame.key.get_pressed()[K_s]:
+             elif pygame.key.get_pressed()[K_s]:      #Si se pulsa la s
                 jugador1.moverse(matriz_principal,1)
-             elif pygame.key.get_pressed()[K_UP]:
-                 if cantidad_jugadores == 2:
-                     jugador2.moverse(matriz_principal,-1)
-             elif pygame.key.get_pressed()[K_DOWN]:
-                 if cantidad_jugadores == 2:
-                     jugador2.moverse(matriz_principal,1)
+             elif pygame.key.get_pressed()[K_UP]:          #Si se pulsa la flecha arriba
+                 if cantidad_jugadores == 2:               #Si los jugadores son dos humanos
+                     jugador2.moverse(matriz_principal,-1) #Permite que el segundo jugador se mueva
+             elif pygame.key.get_pressed()[K_DOWN]:        #Si se pulsa la flecha abajo
+                 if cantidad_jugadores == 2:               #Si los jugadores son dos humanos
+                     jugador2.moverse(matriz_principal,1)  #Permite que el segundo jugador se mueva para abajo
 
-         tiempo = reloj.tick(10)                           #Varia la velocidad del juego
+         tiempo = reloj.tick(25)                           #Varia la velocidad del juego
 
 
 

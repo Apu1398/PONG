@@ -1,3 +1,5 @@
+from random import randint
+
 class Bola:
 
     """Clase bola"""
@@ -21,14 +23,16 @@ class Bola:
 
         if self.pos_y == 40:                          #Si la posicion es 40 la puntuacion cambia
             print("Punto")
-            #matriz[self.pos_x][self.pos_y-1]=0                          #Pone en 0 la posicion en la que estaba la bola...
-            self.pos_y=20                                                #Para luego ponerla en el medio
+            matriz[self.pos_x-self.direccion_filas][39] = 0
+            self.pos_y=20                                                #Pone la bola en el medio
+            self.pos_x=randint(1,23)                                                #Pone la bola en el medio
             self.direccion_columnas = -self.direccion_columnas          #La bola iría en direccion contraria
 
         elif self.pos_y == -1:                        #Si la posicion es -1 uno la puntuacion cambia
             print("Punto")
-            #matriz[self.pos_x][self.pos_y+1]=0        #Pone en 0 la posicion en la que estaba la bola...
-            self.pos_y=20                             #Para luego ponerla en el medio
+            matriz[self.pos_x - self.direccion_filas][0] = 0
+            self.pos_y = 20  # Pone la bola en el medio
+            self.pos_x = randint(1,23) # Pone la bola en el medio
             self.direccion_columnas = -self.direccion_columnas          #La bola iría en direccion contraria
 
 
