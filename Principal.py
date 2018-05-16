@@ -33,6 +33,7 @@ AZUL = (16,94,205)                                #Color azul
 grosor1=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 grosor2=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 grosor3=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
+reloj = pygame.time.Clock()                       #Varia la velocidad del juego
 
 while True:                                                    #Bucle principal
 
@@ -203,8 +204,8 @@ while True:                                                    #Bucle principal
              elif pygame.key.get_pressed()[K_DOWN]:
                  if cantidad_jugadores == 2:
                      jugador2.moverse(matriz_principal,1)
-         reloj = pygame.time.Clock()                       #Varia la velocidad del juego
-         tiempo = reloj.tick(25)                           #Varia la velocidad del juego
+
+         tiempo = reloj.tick(10)                           #Varia la velocidad del juego
 
 
 

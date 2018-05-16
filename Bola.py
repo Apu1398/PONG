@@ -21,15 +21,16 @@ class Bola:
 
         if self.pos_y == 40:                          #Si la posicion es 40 la puntuacion cambia
             print("Punto")
-            matriz[self.pos_x][self.pos_y-1]=0        #Pone en 0 la posicion en la que estaba la bola...
-            self.pos_y=20                             #Para luego ponerla en el medio
+            #matriz[self.pos_x][self.pos_y-1]=0                          #Pone en 0 la posicion en la que estaba la bola...
+            self.pos_y=20                                                #Para luego ponerla en el medio
             self.direccion_columnas = -self.direccion_columnas          #La bola iría en direccion contraria
 
         elif self.pos_y == -1:                        #Si la posicion es -1 uno la puntuacion cambia
             print("Punto")
-            matriz[self.pos_x][self.pos_y+1]=0        #Pone en 0 la posicion en la que estaba la bola...
+            #matriz[self.pos_x][self.pos_y+1]=0        #Pone en 0 la posicion en la que estaba la bola...
             self.pos_y=20                             #Para luego ponerla en el medio
             self.direccion_columnas = -self.direccion_columnas          #La bola iría en direccion contraria
+
 
         elif matriz[self.pos_x][self.pos_y] == 1:     #Si la siguiente posicion es 1 la bola "Rebota"
 
@@ -38,8 +39,9 @@ class Bola:
                 self.direccion_columnas = 1
                 self.pos_x += self.direccion_filas
                 self.pos_y += self.direccion_columnas
-                for i in range(1,24):
+                for i in range(1,24):                        #Borra bruscamente la columna1
                     matriz[i][1]=0
+
 
             elif self.pos_x in range(tupla1[1][0],tupla1[1][1]) and self.pos_y == 0:
                 self.direccion_filas = 0
