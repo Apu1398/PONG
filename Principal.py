@@ -10,7 +10,7 @@ LARGO_VENTANA = 375
 ventana = pygame.display.set_mode((ANCHO_VENNTANA,LARGO_VENTANA)) #Tamaño de la ventana
 pygame.display.set_caption("PONG")                                #Titulo de la ventana
 ventana.fill(pygame.Color(0,0,0))                                 #Color del fondo de la ventana(negro)
-pygame.key.set_repeat(1, 100)                                     #Instruccion que arregla la fluidez de la teclas
+pygame.key.set_repeat(1, 50)                                     #Instruccion que arregla la fluidez de la teclas
 
 juego = juego()                                                   #Llama a la clase juego
 matriz_principal = juego.crear_matriz(25,40)                      #Crea la matriz de control
@@ -141,13 +141,13 @@ while True:                                                    #Bucle principal
                     grosor1 = 2                                             #Regresa el grosor a la normalidad
 
                     if cantidad_jugadores==1:                               #Verifica cual fue la seleccion del usuario
-                        jugador1 = Jugador(0,7,9,True,1)                    #Crea jugador 1
-                        jugador2 = Jugador(39,7,9,False,1)                  #Crea jugador 2
+                        jugador1 = Jugador(0,7,6,True,1)                    #Crea jugador 1
+                        jugador2 = Jugador(39,7,6,False,1)                  #Crea jugador 2
                         matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  #Dibuja el juagdor 1
                         matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  #Dibuja el jugador 2
                     elif cantidad_jugadores == 2:                                          # Verifica cual fue la seleccion del usuario
-                        jugador1 = Jugador(0, 7, 9, True, 1)                               # Crea jugador 1
-                        jugador2 = Jugador(39, 7, 9, True, 1)                              # Crea jugador 2
+                        jugador1 = Jugador(0, 7, 3, True, 1)                               # Crea jugador 1
+                        jugador2 = Jugador(39, 7, 3, True, 1)                              # Crea jugador 2
                         matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  # Dibuja el juagdor 1
                         matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  # Dibuja el jugador 2
 
@@ -205,7 +205,10 @@ while True:                                                    #Bucle principal
                  if cantidad_jugadores == 2:               #Si los jugadores son dos humanos
                      jugador2.moverse(matriz_principal,1)  #Permite que el segundo jugador se mueva para abajo
 
-         tiempo = reloj.tick(25)                           #Varia la velocidad del juego
+         if BALL.pos_y == 12:
+             jugador2.moverse(matriz_principal,0)
+
+         tiempo = reloj.tick(30)                           #Varia la velocidad del juego
 
 
 
