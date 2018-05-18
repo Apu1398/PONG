@@ -212,7 +212,7 @@ while True:                                                    #Bucle principal
          if BALL.pos_y in range(20,25) or BALL.pos_y in range(30, 35):
              jugador2.moverse(matriz_principal,0,BALL.pos_x,BALL.direccion_columnas)
          ventana.blit(FUENTE.render(str(j1), True, (255, 255, 255)), (150, 50))
-         ventana.blit(FUENTE.render(str(j2), True, (255, 255, 255)), (450, 50))
+         ventana.blit(FUENTE.render(str(j2), True, (255, 255, 255)), (451, 50))
          pygame.draw.rect(ventana, AZUL, [300, -10, 10, 500])
 
          tiempo = reloj.tick(25)                           #Varia la velocidad del juego
