@@ -26,7 +26,6 @@ class Bola:
             self.direccion_filas = 0
         elif self.pos_y == -1:                                            #Si la posicion es -1 uno la puntuacion cambia
             self.punto2+=1                                                #Se va sumando puntos si el jugador 2 puntua
-            #print("PUNTO 2    /",  str(self.punto2))
             matriz[self.pos_x - self.direccion_filas][0] = 0
             self.pos_y = 20                                               # Pone la bola en el medio
             self.pos_x = 12                                               # Pone la bola en el medio

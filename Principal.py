@@ -41,7 +41,7 @@ while True:                                                    #Bucle principal
     if Principal_1:                                              #Si el usuario esta en la pantalla principal
         ventana.fill(NEGRO)
 
-        pygame.draw.rect(ventana,AZUL, [3,3,595,369], 15)      #Dibuja el marco
+        #pygame.draw.rect(ventana,AZUL, [3,3,595,369], 15)      #Dibuja el marco
         ventana.blit(Imagen_titulo,(195,10))                   #Posiciona el titulo a la ventana
 
         #Botones------------------------------------------------------------------------------------------------------
@@ -99,7 +99,7 @@ while True:                                                    #Bucle principal
     elif Principal_2:
         ventana.fill(NEGRO)                                    #Pone la pantalla en negro
 
-        pygame.draw.rect(ventana, AZUL, [3, 3, 595, 369], 15)  # Dibuja el marco
+        #pygame.draw.rect(ventana, AZUL, [3, 3, 595, 369], 15)  # Dibuja el marco
         ventana.blit(Imagen_titulo, (195, 10))                 # Posiciona el titulo a la ventana
 
         # Botones------------------------------------------------------------------------------------------------------
@@ -192,7 +192,7 @@ while True:                                                    #Bucle principal
              for j in range(40):
                  color = NEGRO                          #El color prederteminado sera el negro
                  if matriz_principal[i][j] == 1:        #Si hay un uno el cuadro será blanco
-                    color= AZUL                         #indica color azul
+                    color= BLANCO                         #indica color azul
                  pygame.draw.rect(ventana,color,[ALTO*j,ANCHO*i,ALTO,ANCHO],0) #Dibuja cada cuadro
 
          for event in pygame.event.get():          #Eventos
@@ -214,7 +214,7 @@ while True:                                                    #Bucle principal
              jugador2.moverse(matriz_principal,0,BALL.pos_x,BALL.direccion_columnas)#le da movilidad al cpu
          ventana.blit(FUENTE1.render(str(j1), True, (255, 255, 255)), (150, 50)) #Muestra en pantalla la puntuacion de jugador 1
          ventana.blit(FUENTE1.render(str(j2), True, (255, 255, 255)), (451, 50)) #Muestra en pantalla la puntuacion de jugador 2
-         pygame.draw.rect(ventana, AZUL, [300, -10, 10, 500])
+         pygame.draw.rect(ventana, BLANCO, [300, -10, 10, 500])
 
          tiempo = reloj.tick(25)                           #Varia la velocidad del juego
     pygame.display.update()                  #Actualiza la pantalla
