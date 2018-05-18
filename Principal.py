@@ -152,7 +152,7 @@ while True:                                                    #Bucle principal
                         matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  # Dibuja el juagdor 1
                         matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  # Dibuja el jugador 2
 
-                elif 200<= x_mouse <= 380 and 200 <= y_mouse <= 230:        #Clic sobre el boton dos paletas
+                elif 200<= x_mouse <= 380 and 200 <= y_mouse <= 230:        #Click sobre el boton dos paletas
                     sonido.play()
                     Principal_2 = False
                     ventana.fill(NEGRO)
