@@ -64,3 +64,4 @@ class Bola:
             matriz[self.pos_x][self.pos_y] = 1                   #"Enciende el siguiente cuadrante
 
         return matriz                                            #Retorna la matriz
+
