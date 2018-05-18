@@ -27,6 +27,7 @@ Principal_1 = True                               #Inicia con el menu principal
 Principal_2 = False                              #Indica cuando se va a utilizar la pantalla de escoger paletas
 
 FUENTE= pygame.font.Font(None,35)                #Crea variable con la fuente que se va utilizar
+FUENTE1= pygame.font.Font(None,60)                #Crea variable con la fuente que se va utilizar
 Imagen_titulo = pygame.image.load("Titulo.png")  #Crea la imagen para el titulo
 sonido = pygame.mixer.Sound("menu_over.wav")     #Carga sonido para cuando el mouse se posicione sobre un boton
 AZUL = (16,94,205)                               #Color azul
@@ -181,27 +182,27 @@ while True:                                                    #Bucle principal
 
          tupla_jugador1 = jugador1.get_posicion()                            #Obtiene las sublistas de cada jugador, dependiendo de la posicion
          tupla_jugador2 = jugador2.get_posicion()                            #Obtiene las sublistas de cada jugador, dependiendo de la posicion
-         BALL.dibujar_bola(matriz_principal)
+         BALL.dibujar_bola(matriz_principal)                                 #dibuja la bola
          BALL.moverse_bola(matriz_principal,tupla_jugador1,tupla_jugador2)   #Mueve la bola, necesita los argumentos para determinar su comportamiento
 
-         j1=BALL.punto_jugador1()
-         j2=BALL.punto_jugador2()
+         j1=BALL.punto_jugador1()                        #se usa el metodo punto_jugador1 para saber los puntos de jugador 1
+         j2=BALL.punto_jugador2()                        #se usa el metodo punto_jugador2 para saber los puntos de jugador 2
 
          for i in range(25):                            #Bucle que actualiza la matriz dependiendo de la matriz principal
              for j in range(40):
                  color = NEGRO                          #El color prederteminado sera el negro
                  if matriz_principal[i][j] == 1:        #Si hay un uno el cuadro será blanco
-                    color= AZUL
+                    color= AZUL                         #indica color azul
                  pygame.draw.rect(ventana,color,[ALTO*j,ANCHO*i,ALTO,ANCHO],0) #Dibuja cada cuadro
 
          for event in pygame.event.get():          #Eventos
              if event.type== QUIT:                 #Si se pulsa la "x"
-               pygame.quit()
-               sys.exit()
+               pygame.quit()#finaliza
+               sys.exit()#sale
              elif pygame.key.get_pressed()[K_w]:      #Si se pulsa la w
-                jugador1.moverse(matriz_principal,-1,0,0)
+                jugador1.moverse(matriz_principal,-1,0,0)#da movilidad a jugador uno hacia abajo
              elif pygame.key.get_pressed()[K_s]:      #Si se pulsa la s
-                jugador1.moverse(matriz_principal,1,0,0)
+                jugador1.moverse(matriz_principal,1,0,0)#da movilidad a jugador uno hacia abajo
              elif pygame.key.get_pressed()[K_UP]:          #Si se pulsa la flecha arriba
                  if cantidad_jugadores == 2:               #Si los jugadores son dos humanos
                      jugador2.moverse(matriz_principal,-1,0,0) #Permite que el segundo jugador se mueva
@@ -209,10 +210,10 @@ while True:                                                    #Bucle principal
                  if cantidad_jugadores == 2:               #Si los jugadores son dos humanos
                      jugador2.moverse(matriz_principal,1,0,0)  #Permite que el segundo jugador se mueva para abajo
 
-         if BALL.pos_y in range(20,25) or BALL.pos_y in range(30, 35):
-             jugador2.moverse(matriz_principal,0,BALL.pos_x,BALL.direccion_columnas)
-         ventana.blit(FUENTE.render(str(j1), True, (255, 255, 255)), (150, 50))
-         ventana.blit(FUENTE.render(str(j2), True, (255, 255, 255)), (451, 50))
+         if BALL.pos_y in range(20,22) or BALL.pos_y in range(30, 32): #indica las direcciones de bola para que el cpu sepa hacia donde moverse
+             jugador2.moverse(matriz_principal,0,BALL.pos_x,BALL.direccion_columnas)#le da movilidad al cpu
+         ventana.blit(FUENTE1.render(str(j1), True, (255, 255, 255)), (150, 50)) #Muestra en pantalla la puntuacion de jugador 1
+         ventana.blit(FUENTE1.render(str(j2), True, (255, 255, 255)), (451, 50)) #Muestra en pantalla la puntuacion de jugador 2
          pygame.draw.rect(ventana, AZUL, [300, -10, 10, 500])
 
          tiempo = reloj.tick(25)                           #Varia la velocidad del juego
