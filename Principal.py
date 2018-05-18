@@ -143,6 +143,7 @@ while True:                                                    #Bucle principal
                     if cantidad_jugadores==1:                               #Verifica cual fue la seleccion del usuario
                         jugador1 = Jugador(0,7,9,True,1)                    #Crea jugador 1
                         jugador2 = Jugador(39,7,9,False,1)                  #Crea jugador 2
+                        fps = 25
 
                         matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  #Dibuja el juagdor 1
                         matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  #Dibuja el jugador 2
@@ -212,10 +213,22 @@ while True:                                                    #Bucle principal
 
          if BALL.pos_y in range(20,22) or BALL.pos_y in range(30, 32): #indica las direcciones de bola para que el cpu sepa hacia donde moverse
              jugador2.moverse(matriz_principal,0,BALL.pos_x,BALL.direccion_columnas)#le da movilidad al cpu
+
          ventana.blit(FUENTE1.render(str(j1), True, (255, 255, 255)), (150, 50)) #Muestra en pantalla la puntuacion de jugador 1
-         ventana.blit(FUENTE1.render(str(j2), True, (255, 255, 255)), (451, 50)) #Muestra en pantalla la puntuacion de jugador 2
+         ventana.blit(FUENTE1.render(str(j2), True, (255, 255, 255)), (450, 50)) #Muestra en pantalla la puntuacion de jugador 2
          pygame.draw.rect(ventana, BLANCO, [300, -10, 10, 500])
 
-         tiempo = reloj.tick(25)                           #Varia la velocidad del juego
+         if BALL.punto_jugador1() == 5:
+
+             jugador1 = Jugador(0,jugador1.y , 6, True, 1)  # Crea jugador 1
+             jugador2 = Jugador(39, jugador2.y, 6, False, 1)  # Crea jugador 2
+             for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
+                 matriz_principal[i][0] = 0
+                 matriz_principal[i][39] = 0
+             jugador1.dibujar_en_pantalla(matriz_principal)
+             jugador2.dibujar_en_pantalla(matriz_principal)
+             fps = 30
+
+         tiempo = reloj.tick(fps)                           #Varia la velocidad del juego
     pygame.display.update()                  #Actualiza la pantalla
 

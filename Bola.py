@@ -5,7 +5,7 @@ class Bola:
         self.direccion_filas = direccion_filas
         self.pos_x = pos_x
         self.pos_y = pos_y
-        self.punto1=0
+        self.punto1=4
         self.punto2=0
 
     def dibujar_bola(self,matriz):
