@@ -185,8 +185,8 @@ while True:                                                    #Bucle principal
          BALL.dibujar_bola(matriz_principal)                                 #dibuja la bola
          BALL.moverse_bola(matriz_principal,tupla_jugador1,tupla_jugador2)   #Mueve la bola, necesita los argumentos para determinar su comportamiento
 
-         j1=BALL.punto_jugador1()                        #se usa el metodo punto_jugador1 para saber los puntos de jugador 1
-         j2=BALL.punto_jugador2()                        #se usa el metodo punto_jugador2 para saber los puntos de jugador 2
+         j1=BALL.punto_jugador1()                        #se usa el metodo punto_jugador1 para los puntos de jugador 1
+         j2=BALL.punto_jugador2()                        #se usa el metodo punto_jugador2 para los puntos de jugador 2
 
          for i in range(25):                            #Bucle que actualiza la matriz dependiendo de la matriz principal
              for j in range(40):
