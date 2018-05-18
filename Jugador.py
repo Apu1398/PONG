@@ -1,11 +1,12 @@
 class Jugador():
 
-    def __init__(self, x,y,tam_paleta,Humano,cantidad_paletas):
+    def __init__(self, x,y,tam_paleta,jugador,cantidad_paletas):
         self.x=x
         self.y=y
         self.tam_paleta = tam_paleta
-        self.Humano = Humano
+        self.jugador = jugador
         self.cantidad_paletas = cantidad_paletas
+        self.direccion_columna=-1
 
     def dibujar_en_pantalla(self, matriz):
         if self.cantidad_paletas == 1:                         #Si la cantidad de paletas es 1
@@ -24,6 +25,7 @@ class Jugador():
             if self.y >= 1 and (self.y + self.tam_paleta) <=24:
                 for i in range(1,24):                               #Iteracion que limpia la parte de la pantalla del juagdor
                     matriz[i][self.x] = 0
+                    print(matriz[i][self.x])
                 for i in range(self.y,self.y + self.tam_paleta):    #Pone en 1 la nueva posicion de la paleta
                     matriz[i][self.x]=1
 
@@ -49,29 +51,16 @@ class Jugador():
                     ((self.y + (self.tam_paleta // 3) * 2),self.y + (self.tam_paleta // 3) * 3)
         return tupla_pos
 
+    def cpu(self, matriz,lista_pos):
+        posx= lista_pos[0]
+        posy = lista_pos[1]
+        posy += self.direccion_columna
+        if posy==19:
+            pass
+
+        return matriz
 
 
 
-    # def tipo_Jugador(self, tipo_jugador):
-    #     "Metodo que elige si es jugador humano o AI"
-    #
-    #     if tipo_jugador==True:
-    #         self.movimiento_humano()
-    #     else:
-    #         self.movimiento_AI()
 
-    ##IMPORTANTE:
-    # Lo comento porque creo que con solo poner self.tipo_de_jugador en cualquier metodo ya se que tipo de jugador es
-
-    # def movimiento_humano(self):
-    #
-    #     "Metodo que le da movimiento al humano"
-    #
-    #     if self.dibujar_en_pantalla().bottom >=  LARGO_VENTANA:
-    #         self.dibujar_en_pantalla().bottom = LARGO_VENTANA
-    #     elif self.dibujar_en_pantalla().top <=0:
-    #         self.dibujar_en_pantalla().top = 0
-    #
-    # def movimiento_AI(self):
-    #     pass
 

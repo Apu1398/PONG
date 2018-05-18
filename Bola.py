@@ -92,3 +92,9 @@ class Bola:
             matriz[self.pos_x][self.pos_y] = 1                   #"Enciende el siguiente cuadrante
 
         return matriz                                            #Retorna la matriz
+
+
+    def get_posicion(self):           #Funcion que retorna la posicion del jugador divida
+        list_pos = [self.y,self.pos_y]
+        return list_pos
+

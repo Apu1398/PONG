@@ -180,6 +180,9 @@ while True:                                                    #Bucle principal
 
          tupla_jugador1 = jugador1.get_posicion()                            #Obtiene las sublistas de cada jugador, dependiendo de la posicion
          tupla_jugador2 = jugador2.get_posicion()                            #Obtiene las sublistas de cada jugador, dependiendo de la posicion
+         #BALL.get_posicion()
+         posx_ball = BALL.get_posicion()
+         #print(lista)
          BALL.dibujar_bola(matriz_principal)
          BALL.moverse_bola(matriz_principal,tupla_jugador1,tupla_jugador2)   #Mueve la bola, necesita los argumentos para determinar su comportamiento
 
@@ -203,9 +206,11 @@ while True:                                                    #Bucle principal
                      jugador2.moverse(matriz_principal,-1) #Permite que el segundo jugador se mueva
              elif pygame.key.get_pressed()[K_DOWN]:        #Si se pulsa la flecha abajo
                  if cantidad_jugadores == 2:               #Si los jugadores son dos humanos
-                     jugador2.moverse(matriz_principal,1)  #Permite que el segundo jugador se mueva para abajo
+                     jugador2.cpu(matriz_principal, posx_ball)  #Permite que el segundo jugador se mueva para abajo
+             #elif pygame.key.get_pressed()[K_SPACE]:        #Si se pulsa la flecha abajo
+             jugador2.cpu(matriz_principal, posx_ball)  #Permite que el segundo jugador se mueva para abajo
 
-         tiempo = reloj.tick(25)                           #Varia la velocidad del juego
+         tiempo = reloj.tick(2)                           #Varia la velocidad del juego
 
 
 
