@@ -1,3 +1,4 @@
+
 class Jugador():
 
     def __init__(self, x,y,tam_paleta,Humano,cantidad_paletas):
