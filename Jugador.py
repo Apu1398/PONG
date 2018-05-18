@@ -64,8 +64,13 @@ class Jugador():
 
         return matriz
 
-    def get_posicion(self):           #Funcion que retorna la posicion del jugador divida
+    def get_posicion(self):                                                         #Funcion que retorna la posicion del jugador divida
         tupla_pos = (self.y,self.y +(self.tam_paleta//3)), \
                     ((self.y +(self.tam_paleta//3),self.y+(self.tam_paleta//3)*2)),\
                     ((self.y + (self.tam_paleta // 3) * 2),self.y + (self.tam_paleta // 3) * 3)
-        return tupla_pos
+
+        tupla_pos2 = (self.y+11,self.y+11 +(self.tam_paleta//3)), \
+                    ((self.y+11 +(self.tam_paleta//3),self.y+11+(self.tam_paleta//3)*2)),\
+                    ((self.y+11 + (self.tam_paleta // 3) * 2),self.y +11 + (self.tam_paleta // 3) * 3)
+
+        return tupla_pos,tupla_pos2

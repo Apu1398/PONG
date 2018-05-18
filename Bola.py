@@ -5,7 +5,7 @@ class Bola:
         self.direccion_filas = direccion_filas
         self.pos_x = pos_x
         self.pos_y = pos_y
-        self.punto1=4
+        self.punto1=0
         self.punto2=0
 
     def dibujar_bola(self,matriz):
@@ -32,24 +32,50 @@ class Bola:
             self.direccion_columnas = -self.direccion_columnas            #La bola iría en direccion contraria
             self.direccion_filas = 0
         elif matriz[self.pos_x][self.pos_y] == 1:                         #Si la siguiente posicion es 1 la bola "Rebota"
-            if self.pos_x in range(tupla1[0][0],tupla1[0][1]) and self.pos_y == 0:
+
+            #Primera paleta del jugador 1
+            if self.pos_x in range(tupla1[0][0][0],tupla1[0][0][1]) and self.pos_y == 0:
                 self.direccion_filas = -1
                 self.direccion_columnas = 1
-            elif self.pos_x in range(tupla1[1][0],tupla1[1][1]) and self.pos_y == 0:
+            elif self.pos_x in range(tupla1[0][1][0],tupla1[0][1][1]) and self.pos_y == 0:
                 self.direccion_filas = 0
                 self.direccion_columnas = 1
-            elif self.pos_x in range(tupla1[2][0],tupla1[2][1]) and self.pos_y == 0:
+            elif self.pos_x in range(tupla1[0][2][0],tupla1[0][2][1]) and self.pos_y == 0:
                 self.direccion_filas = 1
                 self.direccion_columnas = 1
-            elif self.pos_x in range(tupla2[0][0],tupla2[0][1]) and self.pos_y == 39:
+
+            #Segunda paleta del jugador1------------------------------------------------------------
+            elif self.pos_x in range(tupla1[1][0][0],tupla1[1][0][1]) and self.pos_y == 0:
+                self.direccion_filas = -1
+                self.direccion_columnas = 1
+            elif self.pos_x in range(tupla1[1][1][0],tupla1[1][1][1]) and self.pos_y == 0:
+                self.direccion_filas = 0
+                self.direccion_columnas = 1
+            elif self.pos_x in range(tupla1[1][2][0],tupla1[1][2][1]) and self.pos_y == 0:
+                self.direccion_filas = 1
+                self.direccion_columnas = 1
+            #Primera paleta del jugador 2------------------------------------------------------------
+
+            elif self.pos_x in range(tupla2[0][0][0],tupla2[0][0][1]) and self.pos_y == 39:
                 self.direccion_filas = -1
                 self.direccion_columnas = -1
-            elif self.pos_x in range(tupla2[1][0],tupla2[1][1]) and self.pos_y == 39:
+            elif self.pos_x in range(tupla2[0][1][0],tupla2[0][1][1]) and self.pos_y == 39:
                 self.direccion_filas = 0
                 self.direccion_columnas = -1
-            elif self.pos_x in range(tupla2[2][0],tupla2[2][1]) and self.pos_y == 39:
+            elif self.pos_x in range(tupla2[0][2][0],tupla2[0][2][1]) and self.pos_y == 39:
                 self.direccion_filas = 1
                 self.direccion_columnas = -1
+            #Segunda paleta del jugador 2
+            elif self.pos_x in range(tupla2[1][0][0],tupla2[1][0][1]) and self.pos_y == 39:
+                self.direccion_filas = -1
+                self.direccion_columnas = -1
+            elif self.pos_x in range(tupla2[1][1][0],tupla2[1][1][1]) and self.pos_y == 39:
+                self.direccion_filas = 0
+                self.direccion_columnas = -1
+            elif self.pos_x in range(tupla2[1][2][0],tupla2[1][2][1]) and self.pos_y == 39:
+                self.direccion_filas = 1
+                self.direccion_columnas = -1
+
             elif self.pos_x == 0 or self.pos_x == 24:
                 self.direccion_filas = -self.direccion_filas
                 self.pos_x += self.direccion_filas

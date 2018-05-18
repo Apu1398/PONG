@@ -35,6 +35,7 @@ grosor1=2                                        #Tamaño del grosor utilizado p
 grosor2=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 grosor3=2                                        #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 reloj = pygame.time.Clock()                       #Varia la velocidad del juego
+fps = 20
 
 while True:                                                    #Bucle principal
 
@@ -148,8 +149,8 @@ while True:                                                    #Bucle principal
                         matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  #Dibuja el juagdor 1
                         matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  #Dibuja el jugador 2
                     elif cantidad_jugadores == 2:                                          # Verifica cual fue la seleccion del usuario
-                        jugador1 = Jugador(0, 7, 3, True, 1)                               # Crea jugador 1
-                        jugador2 = Jugador(39, 7, 3, True, 1)                              # Crea jugador 2
+                        jugador1 = Jugador(0, 7, 9, True, 1)                               # Crea jugador 1
+                        jugador2 = Jugador(39, 7, 9, True, 1)                              # Crea jugador 2
                         matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  # Dibuja el juagdor 1
                         matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  # Dibuja el jugador 2
 
@@ -182,7 +183,7 @@ while True:                                                    #Bucle principal
     else:                                              #Si no se esta sobre el menu principal, carga el campo de juego
 
          tupla_jugador1 = jugador1.get_posicion()                            #Obtiene las sublistas de cada jugador, dependiendo de la posicion
-         tupla_jugador2 = jugador2.get_posicion()                            #Obtiene las sublistas de cada jugador, dependiendo de la posicion
+         tupla_jugador2 = jugador2.get_posicion()                          #Obtiene las sublistas de cada jugador, dependiendo de la posicion
          BALL.dibujar_bola(matriz_principal)                                 #dibuja la bola
          BALL.moverse_bola(matriz_principal,tupla_jugador1,tupla_jugador2)   #Mueve la bola, necesita los argumentos para determinar su comportamiento
 
