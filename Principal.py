@@ -10,11 +10,11 @@ LARGO_VENTANA = 375
 ventana = pygame.display.set_mode((ANCHO_VENNTANA,LARGO_VENTANA)) #Tamaño de la ventana
 pygame.display.set_caption("PONG")                                #Titulo de la ventana
 ventana.fill(pygame.Color(0,0,0))                                 #Color del fondo de la ventana(negro)
-pygame.key.set_repeat(1, 100)                                     #Instruccion que arregla la fluidez de la teclas
+pygame.key.set_repeat(1, 50)                                     #Instruccion que arregla la fluidez de la teclas
 
 juego = juego()                                                   #Llama a la clase juego
 matriz_principal = juego.crear_matriz(25,40)                      #Crea la matriz de control
-BALL = Bola(13,20,-1,-1)
+BALL = Bola(13,20,-1,1)
 
 
 ALTO = 15                                          #Constantes de la matriz de la interfaz
@@ -146,8 +146,8 @@ while True:                                                    #Bucle principal
                         matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  #Dibuja el juagdor 1
                         matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  #Dibuja el jugador 2
                     elif cantidad_jugadores == 2:                                          # Verifica cual fue la seleccion del usuario
-                        jugador1 = Jugador(0, 7, 9, True, 1)                               # Crea jugador 1
-                        jugador2 = Jugador(39, 7, 9, True, 1)                              # Crea jugador 2
+                        jugador1 = Jugador(0, 7, 3, True, 1)                               # Crea jugador 1
+                        jugador2 = Jugador(39, 7, 3, True, 1)                              # Crea jugador 2
                         matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  # Dibuja el juagdor 1
                         matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  # Dibuja el jugador 2
 
@@ -180,9 +180,6 @@ while True:                                                    #Bucle principal
 
          tupla_jugador1 = jugador1.get_posicion()                            #Obtiene las sublistas de cada jugador, dependiendo de la posicion
          tupla_jugador2 = jugador2.get_posicion()                            #Obtiene las sublistas de cada jugador, dependiendo de la posicion
-         #BALL.get_posicion()
-         posx_ball = BALL.get_posicion()
-         #print(lista)
          BALL.dibujar_bola(matriz_principal)
          BALL.moverse_bola(matriz_principal,tupla_jugador1,tupla_jugador2)   #Mueve la bola, necesita los argumentos para determinar su comportamiento
 
@@ -198,21 +195,20 @@ while True:                                                    #Bucle principal
                pygame.quit()
                sys.exit()
              elif pygame.key.get_pressed()[K_w]:      #Si se pulsa la w
-                jugador1.moverse(matriz_principal,-1)
+                jugador1.moverse(matriz_principal,-1,0,0)
              elif pygame.key.get_pressed()[K_s]:      #Si se pulsa la s
-                jugador1.moverse(matriz_principal,1)
+                jugador1.moverse(matriz_principal,1,0,0)
              elif pygame.key.get_pressed()[K_UP]:          #Si se pulsa la flecha arriba
                  if cantidad_jugadores == 2:               #Si los jugadores son dos humanos
-                     jugador2.moverse(matriz_principal,-1) #Permite que el segundo jugador se mueva
+                     jugador2.moverse(matriz_principal,-1,0,0) #Permite que el segundo jugador se mueva
              elif pygame.key.get_pressed()[K_DOWN]:        #Si se pulsa la flecha abajo
                  if cantidad_jugadores == 2:               #Si los jugadores son dos humanos
-                     jugador2.cpu(matriz_principal, posx_ball)  #Permite que el segundo jugador se mueva para abajo
-             #elif pygame.key.get_pressed()[K_SPACE]:        #Si se pulsa la flecha abajo
-             jugador2.cpu(matriz_principal, posx_ball)  #Permite que el segundo jugador se mueva para abajo
+                     jugador2.moverse(matriz_principal,1,0,0)  #Permite que el segundo jugador se mueva para abajo
 
-         tiempo = reloj.tick(2)                           #Varia la velocidad del juego
+         if BALL.pos_y in range(20,27) or BALL.pos_y in range(34,38):
+             jugador2.moverse(matriz_principal,0,BALL.pos_x,BALL.direccion_columnas)
 
-
+         tiempo = reloj.tick(25)                           #Varia la velocidad del juego
 
     pygame.display.update()                  #Actualiza la pantalla
 
