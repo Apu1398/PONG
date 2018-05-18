@@ -5,6 +5,8 @@ class Bola:
         self.direccion_filas = direccion_filas
         self.pos_x = pos_x
         self.pos_y = pos_y
+        self.punto1=0
+        self.punto2=0
 
     def dibujar_bola(self,matriz):
         matriz[self.pos_x][self.pos_y]=1
@@ -16,17 +18,19 @@ class Bola:
         self.pos_x += self.direccion_filas
 
         if self.pos_y == 40:                                             #Si la posicion es 40 la puntuacion cambia
-            print("Punto")
+            self.punto1+=1
+            #print("PUNTO 1   /" , str(self.punto1))
             matriz[self.pos_x-self.direccion_filas][39] = 0
             self.pos_y=20                                                           #Pone la bola en el medio
             self.pos_x= 12                                                #Pone la bola en el medio
             self.direccion_columnas = -self.direccion_columnas                      #La bola iría en direccion contraria
             self.direccion_filas = 0
         elif self.pos_y == -1:                                           #Si la posicion es -1 uno la puntuacion cambia
-            print("Punto")
+            self.punto2+=1
+            #print("PUNTO 2    /",  str(self.punto2))
             matriz[self.pos_x - self.direccion_filas][0] = 0
             self.pos_y = 20  # Pone la bola en el medio
-            self.pos_x = (12) # Pone la bola en el medio
+            self.pos_x = 12  # Pone la bola en el medio
             self.direccion_columnas = -self.direccion_columnas           #La bola iría en direccion contraria
             self.direccion_filas = 0
         elif matriz[self.pos_x][self.pos_y] == 1:                                     #Si la siguiente posicion es 1 la bola "Rebota"
@@ -64,4 +68,9 @@ class Bola:
             matriz[self.pos_x][self.pos_y] = 1                   #"Enciende el siguiente cuadrante
 
         return matriz                                            #Retorna la matriz
-
+    def punto_jugador1(self):
+        #print("PUNTO 1   /" , str(self.punto1))
+        return self.punto1
+    def punto_jugador2(self):
+        #print("PUNTO 2   /", str(self.punto2))
+        return  self.punto2

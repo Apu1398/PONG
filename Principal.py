@@ -139,10 +139,10 @@ while True:                                                    #Bucle principal
                     Principal_2=False                                       #Deshabilita el menu principal dos
                     ventana.fill(NEGRO)                                     #Pinta la pantalla de negro (Para dibujar sobre ella)
                     grosor1 = 2                                             #Regresa el grosor a la normalidad
-
                     if cantidad_jugadores==1:                               #Verifica cual fue la seleccion del usuario
                         jugador1 = Jugador(0,7,9,True,1)                    #Crea jugador 1
                         jugador2 = Jugador(39,7,9,False,1)                  #Crea jugador 2
+
                         matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  #Dibuja el juagdor 1
                         matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  #Dibuja el jugador 2
                     elif cantidad_jugadores == 2:                                          # Verifica cual fue la seleccion del usuario
@@ -160,6 +160,7 @@ while True:                                                    #Bucle principal
                     if cantidad_jugadores == 1:
                         jugador1 = Jugador(0,2,9,True,2)                                   #Crea al jugador 1 con dos paletas
                         jugador2 = Jugador(39,2,9,False,2)                                 #Crea al jugador 2 con dos paletas
+
                         matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  # Dibuja el juagdor 1
                         matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  # Dibuja el jugador 2
 
@@ -183,6 +184,9 @@ while True:                                                    #Bucle principal
          BALL.dibujar_bola(matriz_principal)
          BALL.moverse_bola(matriz_principal,tupla_jugador1,tupla_jugador2)   #Mueve la bola, necesita los argumentos para determinar su comportamiento
 
+         j1=BALL.punto_jugador1()
+         j2=BALL.punto_jugador2()
+
          for i in range(25):                            #Bucle que actualiza la matriz dependiendo de la matriz principal
              for j in range(40):
                  color = NEGRO                          #El color prederteminado sera el negro
@@ -205,10 +209,12 @@ while True:                                                    #Bucle principal
                  if cantidad_jugadores == 2:               #Si los jugadores son dos humanos
                      jugador2.moverse(matriz_principal,1,0,0)  #Permite que el segundo jugador se mueva para abajo
 
-         if BALL.pos_y in range(20,27) or BALL.pos_y in range(34,38):
+         if BALL.pos_y in range(20,25) or BALL.pos_y in range(30, 35):
              jugador2.moverse(matriz_principal,0,BALL.pos_x,BALL.direccion_columnas)
+         ventana.blit(FUENTE.render(str(j1), True, (255, 255, 255)), (150, 50))
+         ventana.blit(FUENTE.render(str(j2), True, (255, 255, 255)), (450, 50))
+         pygame.draw.rect(ventana, AZUL, [300, -10, 10, 500])
 
          tiempo = reloj.tick(25)                           #Varia la velocidad del juego
-
     pygame.display.update()                  #Actualiza la pantalla
 
