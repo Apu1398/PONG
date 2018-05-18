@@ -205,12 +205,10 @@ while True:                                                    #Bucle principal
                  if cantidad_jugadores == 2:               #Si los jugadores son dos humanos
                      jugador2.moverse(matriz_principal,1,0,0)  #Permite que el segundo jugador se mueva para abajo
 
-         if BALL.pos_y > 20 and BALL.pos_y <38:
+         if BALL.pos_y in range(20,27) or BALL.pos_y in range(34,38):
              jugador2.moverse(matriz_principal,0,BALL.pos_x,BALL.direccion_columnas)
 
-         tiempo = reloj.tick(1)                           #Varia la velocidad del juego
-
-
+         tiempo = reloj.tick(25)                           #Varia la velocidad del juego
 
     pygame.display.update()                  #Actualiza la pantalla
 
