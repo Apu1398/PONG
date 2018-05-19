@@ -7,6 +7,7 @@ from Bola import *
 #Arriba se importa clases a utilizar y librerias a ocupar
 
 pygame.init()                                                     #Inicializa python
+pygame.mixer.init()
 ANCHO_VENNTANA = 600                                              #Constantes de la interfaz
 LARGO_VENTANA = 375                                               #Constantes de la interfaz
 ventana = pygame.display.set_mode((ANCHO_VENNTANA,LARGO_VENTANA)) #Tamaño de la ventana
@@ -33,13 +34,15 @@ FUENTE1= pygame.font.Font(None,60)                 #Crea variable con la fuente 
 Imagen_titulo = pygame.image.load("Titulo.png")    #Crea la imagen para el titulo
 sonido = pygame.mixer.Sound("menu_over.wav")       #Carga sonido para cuando el mouse se posicione sobre un boton
 AZUL = (16,94,205)                                 #Color azul
+musica= pygame.mixer.Sound("pong.ogg")
+#musica.play()
 grosor1=2                                          #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 grosor2=2                                          #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 grosor3=2                                          #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 reloj = pygame.time.Clock()                        #Varia la velocidad del juego
 fps = 20
-
-while True:                                                      #Bucle principal
+valor=True
+while valor:                                                      #Bucle principal
 
     if Principal_1:                                              #Si el usuario esta en la pantalla principal
         ventana.fill(NEGRO)
@@ -272,4 +275,8 @@ while True:                                                      #Bucle principa
                  BALL.punto2 = 0
 
          tiempo = reloj.tick(fps)                           #Varia la velocidad del juego
+    if valor==True:
+        musica.play(loops=1000)
+    else:
+        musica.stop()
     pygame.display.update()                                 #Actualiza la pantalla
