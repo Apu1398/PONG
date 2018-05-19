@@ -11,8 +11,8 @@ class Bola:
         self.pos_y = pos_y #posicion en y
         self.punto1=0 #inicializa la variable de puntos de jugador 1
         self.punto2=0 #inicializa la variable de puntos de jugador 2
-        self.sonido_colision = mixer.Sound("sonido_colision.ogg") #sonido si colisiona con jugadores
-        self.sonido_colision.set_volume(0.1)
+        #self.sonido_colision = mixer.Sound("sonido_colision.ogg") #sonido si colisiona con jugadores
+        #self.sonido_colision.set_volume(0.2)
     def dibujar_bola(self,matriz):
         #E: matriz
         #S: dibujar bola en pantalla
