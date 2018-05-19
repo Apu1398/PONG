@@ -11,8 +11,10 @@ class Bola:
         self.pos_y = pos_y #posicion en y
         self.punto1=0 #inicializa la variable de puntos de jugador 1
         self.punto2=0 #inicializa la variable de puntos de jugador 2
-        #self.sonido_colision = mixer.Sound("sonido_colision.ogg") #sonido si colisiona con jugadores
-        ##self.sonido_colision.set_volume(0.2)
+        self.sonido_colision = mixer.Sound("sonido_colision.ogg") #sonido si colisiona con jugadores
+        self.sonido_colision.set_volume(0.5) #da volumen a sonido colision
+        self.sonido_punto= mixer.Sound("aplausos.ogg")
+        self.sonido_punto.set_volume(0.8) #da volumen a sonido punto
     def dibujar_bola(self,matriz):
         #E: matriz
         #S: dibujar bola en pantalla
@@ -34,14 +36,15 @@ class Bola:
 
         if self.pos_y == 40:                                              #Si la posicion es 40 la puntuacion cambia
             self.punto1+=1                                                #Se va sumando puntos si el jugador 1 puntua
+            self.sonido_punto.play()
             matriz[self.pos_x-self.direccion_filas][39] = 0
             self.pos_y=20                                                 #Pone la bola en el medio
             self.pos_x= 12                                                #Pone la bola en el medio
             self.direccion_columnas = -self.direccion_columnas            #La bola iría en direccion contraria
             self.direccion_filas = 0
-#poner esto donde colisionan con paletas            "self.sonido_colision.play()"
         elif self.pos_y == -1:                                            #Si la posicion es -1 uno la puntuacion cambia
             self.punto2+=1                                                #Se va sumando puntos si el jugador 2 puntua
+            self.sonido_punto.play()
             matriz[self.pos_x - self.direccion_filas][0] = 0
             self.pos_y = 20                                               # Pone la bola en el medio
             self.pos_x = 12                                               # Pone la bola en el medio

@@ -35,7 +35,7 @@ Imagen_titulo = pygame.image.load("Titulo.png")    #Crea la imagen para el titul
 sonido = pygame.mixer.Sound("menu_over.wav")       #Carga sonido para cuando el mouse se posicione sobre un boton
 AZUL = (16,94,205)                                 #Color azul
 musica= pygame.mixer.Sound("pong.ogg")
-#musica.play()
+musica.set_volume(0.04)
 grosor1=2                                          #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 grosor2=2                                          #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 grosor3=2                                          #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
@@ -223,7 +223,9 @@ while valor:                                                      #Bucle princip
          pygame.draw.rect(ventana, BLANCO, [300, -10, 10, 500])
          if not jugador2.humano:
              if BALL.punto_jugador2() == 5 and BALL.punto_jugador1()<4:
-                 break
+                 Principal_1=True
+                 BALL.punto1 = 0
+                 BALL.punto2 = 0
              if BALL.punto_jugador1() == 5 or BALL.punto_jugador2()==5:
 
                  jugador1 = Jugador(0,jugador1.y , 6, True, jugador1.cantidad_paletas)  # Crea jugador 1
@@ -273,7 +275,7 @@ while valor:                                                      #Bucle princip
                  Principal_1=True
                  BALL.punto1 = 0
                  BALL.punto2 = 0
-
+         musica.stop()
          tiempo = reloj.tick(fps)                           #Varia la velocidad del juego
     if valor==True:
         musica.play(loops=1000)
