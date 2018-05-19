@@ -32,6 +32,7 @@ class Jugador:
 
         if self.humano:
             self.y+=direccion                                           #Direccion de movimiento
+
             if self.cantidad_paletas == 1:
                 if self.y >= 1 and (self.y + self.tam_paleta) <=24:
                     for i in range(1,24):                               #Iteracion que limpia la parte de la pantalla del juagdor
@@ -52,24 +53,49 @@ class Jugador:
                     self.y-=direccion
         else:
             if direccion_bola != -1:
-
                 diferencia = self.y - pos_x_bola
-                if self.y >= 1 and (self.y + self.tam_paleta) <= 24:
-                    for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor1
-                        matriz[i][self.x] = 0
-                    if diferencia < 0 :
-                        self.y += 1
-                        for i in range(self.y,self.y + self.tam_paleta):
-                           matriz[i][self.x] = 1
-                    elif diferencia > 0:
+                if self.cantidad_paletas == 1:
+                    if self.y >= 1 and (self.y + self.tam_paleta) < 24:
+                        for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor1
+                            matriz[i][self.x] = 0
+                        if diferencia < 0 :
+                            self.y += 1
+                            for i in range(self.y,self.y + self.tam_paleta):
+                               matriz[i][self.x] = 1
+                        elif diferencia > 0:
+                            self.y -= 1
+                            for i in range(self.y, self.y + self.tam_paleta):
+                                matriz[i][self.x] = 1
+                        elif diferencia == 0:
+                            for i in range(self.y, self.y + self.tam_paleta):
+                                matriz[i][self.x] = 1
+                    else:
                         self.y -= 1
-                        for i in range(self.y, self.y + self.tam_paleta):
-                            matriz[i][self.x] = 1
-                    elif diferencia == 0:
-                        for i in range(self.y, self.y + self.tam_paleta):
-                            matriz[i][self.x] = 1
                 else:
-                    self.y-=1
+
+                    if self.y >= 1 and (self.y + self.tam_paleta + 2 + self.tam_paleta) < 24:
+                        for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor1
+                            matriz[i][self.x] = 0
+                        if diferencia < 0 :
+                            self.y += 1
+                            for i in range(self.y,self.y + self.tam_paleta):
+                               matriz[i][self.x] = 1
+                            for i in range (self.y + self.tam_paleta + 2 ,self.y + self.tam_paleta + 2 + self.tam_paleta):
+                                matriz[i][self.x] = 1
+                        elif diferencia > 0:
+                            self.y -= 1
+                            for i in range(self.y,self.y + self.tam_paleta):
+                               matriz[i][self.x] = 1
+                            for i in range (self.y + self.tam_paleta + 2 ,self.y + self.tam_paleta + 2 + self.tam_paleta):
+                                matriz[i][self.x] = 1
+                        elif diferencia == 0:
+                            for i in range(self.y,self.y + self.tam_paleta):
+                               matriz[i][self.x] = 1
+                            for i in range (self.y + self.tam_paleta + 2 ,self.y + self.tam_paleta + 2 + self.tam_paleta):
+                                matriz[i][self.x] = 1
+                    else:
+                        self.y -= 2
+
 
         return matriz
 
