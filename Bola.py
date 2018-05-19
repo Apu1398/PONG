@@ -23,7 +23,7 @@ class Bola:
         #E: matriz, tupla1 , tupla
         #S: generacion de movimiento y decir si colisiona o no
         #R: No presenta
-        """Metodo que que le movilidad a a la bola, verifica si la bola paso los bordes
+        """Metodo que que le movilidad a la bola, verifica si la bola paso los bordes
            con lo que le da puntuacion a jugador que corresponda, aqui se le indica si colisiona con
            bordes o con alguna paleta"""
 

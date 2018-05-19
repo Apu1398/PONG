@@ -1,13 +1,18 @@
 class Jugador:
-
+    """Clase que genera el objeto jugador con sus funcionalidades como lo son: dibujarse en pantalla,
+        moverse y obtener posicion actual de jugador"""
     def __init__(self, x,y,tam_paleta,humano,cantidad_paletas):
-        self.x=x #da la posicion en x
-        self.y=y #da la posicion en y
-        self.tam_paleta = tam_paleta #da el taamno de la paleta
+        self.x=x                                 #da la posicion en x
+        self.y=y                                 #da la posicion en y
+        self.tam_paleta = tam_paleta             #da el taamno de la paleta
         self.humano = humano                     #comprueba si es humano o no
         self.cantidad_paletas = cantidad_paletas #da la cantidad de paletas a utilizar para jugar
 
     def dibujar_en_pantalla(self, matriz):
+        #E: matriz
+        #S: dibuja en la matriz la paleta
+        #R: No presenta
+        """Metodo encargado de dibujar en la matriz los jugadores"""
         if self.cantidad_paletas == 1:                         #Si la cantidad de paletas es 1
             for i in range(self.y, self.y+self.tam_paleta):
                 matriz[i][self.x] = 1
@@ -19,6 +24,11 @@ class Jugador:
         return matriz
 
     def moverse(self,matriz,direccion,pos_x_bola,direccion_bola):
+        #E: matriz, direccion,pos_x_bola, direccion_bola
+        #S: generacion de movimiento de los jugadores
+        #R: No presenta
+        """Metodo que que le movilidad al jugador, verifica los limites
+           en donde se puede mover los jugadores"""
 
         if self.humano:
             self.y+=direccion                                           #Direccion de movimiento
@@ -63,7 +73,11 @@ class Jugador:
 
         return matriz
 
-    def get_posicion(self):                                                         #Funcion que retorna la posicion del jugador divida
+    def get_posicion(self):
+        #E: No presenta
+        #S: obtencion de las posiones de jugador
+        #R: No presenta
+        """Metodo que retorna la posicion del jugador dividida"""
         tupla_pos = (self.y,self.y +(self.tam_paleta//3)), \
                     ((self.y +(self.tam_paleta//3),self.y+(self.tam_paleta//3)*2)),\
                     ((self.y + (self.tam_paleta // 3) * 2),self.y + (self.tam_paleta // 3) * 3)
