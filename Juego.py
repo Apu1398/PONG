@@ -1,4 +1,5 @@
 class juego:
+    """Clases encargada de la generacion de la matriz a utilizar para desarrollar el juego"""
     n = 0
     m = 0
     matriz=[]
@@ -6,11 +7,13 @@ class juego:
     def __init_(self,n,m,matriz):
         self.n=n #se pide la cantidad n
         self.m = m #se pide la cantidad m
-        self.matriz=matriz #
+        self.matriz=matriz #variable para crear matriz
 
     def crear_matriz(self,n,m):
-
-        """Metodo que crea la matriz"""
+        #E:recibe el n y el m
+        #S:Generar matriz
+        #R:No presenta
+        """Metodo que crea matriz  de 25x40"""
 
         for filas in range(n):
             self.matriz.append([])

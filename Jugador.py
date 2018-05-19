@@ -1,12 +1,11 @@
+class Jugador:
 
-class Jugador():
-
-    def __init__(self, x,y,tam_paleta,Humano,cantidad_paletas):
-        self.x=x
-        self.y=y
-        self.tam_paleta = tam_paleta
-        self.Humano = Humano
-        self.cantidad_paletas = cantidad_paletas
+    def __init__(self, x,y,tam_paleta,humano,cantidad_paletas):
+        self.x=x #da la posicion en x
+        self.y=y #da la posicion en y
+        self.tam_paleta = tam_paleta #da el taamno de la paleta
+        self.humano = humano                     #comprueba si es humano o no
+        self.cantidad_paletas = cantidad_paletas #da la cantidad de paletas a utilizar para jugar
 
     def dibujar_en_pantalla(self, matriz):
         if self.cantidad_paletas == 1:                         #Si la cantidad de paletas es 1
@@ -21,7 +20,7 @@ class Jugador():
 
     def moverse(self,matriz,direccion,pos_x_bola,direccion_bola):
 
-        if self.Humano:
+        if self.humano:
             self.y+=direccion                                           #Direccion de movimiento
             if self.cantidad_paletas == 1:
                 if self.y >= 1 and (self.y + self.tam_paleta) <=24:

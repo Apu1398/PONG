@@ -4,9 +4,11 @@ import pygame,sys
 from pygame.locals import *
 from Bola import *
 
+#Arriba se importa clases a utilizar y librerias a ocupar
+
 pygame.init()                                                     #Inicializa python
-ANCHO_VENNTANA = 600
-LARGO_VENTANA = 375
+ANCHO_VENNTANA = 600                                              #Constantes de la interfaz
+LARGO_VENTANA = 375                                               #Constantes de la interfaz
 ventana = pygame.display.set_mode((ANCHO_VENNTANA,LARGO_VENTANA)) #Tamaño de la ventana
 pygame.display.set_caption("PONG")                                #Titulo de la ventana
 ventana.fill(pygame.Color(0,0,0))                                 #Color del fondo de la ventana(negro)
