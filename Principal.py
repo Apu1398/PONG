@@ -144,7 +144,6 @@ while True:                                                    #Bucle principal
                     if cantidad_jugadores==1:                               #Verifica cual fue la seleccion del usuario
                         jugador1 = Jugador(0,7,9,True,1)                    #Crea jugador 1
                         jugador2 = Jugador(39,7,9,False,1)                  #Crea jugador 2
-                        fps = 25
 
                         matriz_principal = jugador1.dibujar_en_pantalla(matriz_principal)  #Dibuja el juagdor 1
                         matriz_principal = jugador2.dibujar_en_pantalla(matriz_principal)  #Dibuja el jugador 2
@@ -218,18 +217,54 @@ while True:                                                    #Bucle principal
          ventana.blit(FUENTE1.render(str(j1), True, (255, 255, 255)), (150, 50)) #Muestra en pantalla la puntuacion de jugador 1
          ventana.blit(FUENTE1.render(str(j2), True, (255, 255, 255)), (450, 50)) #Muestra en pantalla la puntuacion de jugador 2
          pygame.draw.rect(ventana, BLANCO, [300, -10, 10, 500])
+         if not jugador2.Humano:
+             if BALL.punto_jugador1() == 5 or BALL.punto_jugador2()==5:
 
-         if BALL.punto_jugador1() == 5:
+                 jugador1 = Jugador(0,jugador1.y , 6, True, 1)  # Crea jugador 1
+                 jugador2 = Jugador(39, jugador2.y, 6, False, 1)  # Crea jugador 2
+                 for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
+                     matriz_principal[i][0] = 0
+                     matriz_principal[i][39] = 0
+                 jugador1.dibujar_en_pantalla(matriz_principal)
+                 jugador2.dibujar_en_pantalla(matriz_principal)
+                 fps = 25
+             if BALL.punto_jugador1() == 10 or BALL.punto_jugador2()==10:
 
-             jugador1 = Jugador(0,jugador1.y , 6, True, 1)  # Crea jugador 1
-             jugador2 = Jugador(39, jugador2.y, 6, False, 1)  # Crea jugador 2
-             for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
-                 matriz_principal[i][0] = 0
-                 matriz_principal[i][39] = 0
-             jugador1.dibujar_en_pantalla(matriz_principal)
-             jugador2.dibujar_en_pantalla(matriz_principal)
-             fps = 30
+                 jugador1 = Jugador(0,jugador1.y , 3, True, 1)  # Crea jugador 1
+                 jugador2 = Jugador(39, jugador2.y, 3, False, 1)  # Crea jugador 2
+                 for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
+                     matriz_principal[i][0] = 0
+                     matriz_principal[i][39] = 0
+                 jugador1.dibujar_en_pantalla(matriz_principal)
+                 jugador2.dibujar_en_pantalla(matriz_principal)
+                 fps = 30
+             if BALL.punto_jugador1() == 15 or BALL.punto_jugador2()==15:
+                 print("Final")
+                 break
+         else:
+             if BALL.punto_jugador1() == 5 or BALL.punto_jugador2() == 5:
 
+                 jugador1 = Jugador(0, jugador1.y, 6, True, 1)  # Crea jugador 1
+                 jugador2 = Jugador(39, jugador2.y, 6, True, 1)  # Crea jugador 2
+                 for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
+                     matriz_principal[i][0] = 0
+                     matriz_principal[i][39] = 0
+                 jugador1.dibujar_en_pantalla(matriz_principal)
+                 jugador2.dibujar_en_pantalla(matriz_principal)
+                 fps = 25
+             if BALL.punto_jugador1() == 10 or BALL.punto_jugador2() == 10:
+
+                 jugador1 = Jugador(0, jugador1.y, 3, True, 1)  # Crea jugador 1
+                 jugador2 = Jugador(39, jugador2.y, 3, True, 1)  # Crea jugador 2
+                 for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
+                     matriz_principal[i][0] = 0
+                     matriz_principal[i][39] = 0
+                 jugador1.dibujar_en_pantalla(matriz_principal)
+                 jugador2.dibujar_en_pantalla(matriz_principal)
+                 fps = 30
+             if BALL.punto_jugador1() == 15 or BALL.punto_jugador2() == 15:
+                 print("Final")
+                 break
          tiempo = reloj.tick(fps)                           #Varia la velocidad del juego
     pygame.display.update()                  #Actualiza la pantalla
 
