@@ -1,3 +1,4 @@
+from pygame import *
 class Bola:
 
     """Clase que genera el objeto bola con sus funcionalidades como lo son: dibujarse en pantalla,
@@ -10,7 +11,8 @@ class Bola:
         self.pos_y = pos_y #posicion en y
         self.punto1=0 #inicializa la variable de puntos de jugador 1
         self.punto2=0 #inicializa la variable de puntos de jugador 2
-
+        self.sonido_colision = mixer.Sound("sonido_colision.ogg") #sonido si colisiona con jugadores
+        self.sonido_colision.set_volume(0.1)
     def dibujar_bola(self,matriz):
         #E: matriz
         #S: dibujar bola en pantalla
@@ -37,6 +39,7 @@ class Bola:
             self.pos_x= 12                                                #Pone la bola en el medio
             self.direccion_columnas = -self.direccion_columnas            #La bola iría en direccion contraria
             self.direccion_filas = 0
+#poner esto donde colisionan con paletas            "self.sonido_colision.play()"
         elif self.pos_y == -1:                                            #Si la posicion es -1 uno la puntuacion cambia
             self.punto2+=1                                                #Se va sumando puntos si el jugador 2 puntua
             matriz[self.pos_x - self.direccion_filas][0] = 0
@@ -50,44 +53,56 @@ class Bola:
             if self.pos_x in range(tupla1[0][0][0],tupla1[0][0][1]) and self.pos_y == 0:
                 self.direccion_filas = -1
                 self.direccion_columnas = 1
+                self.sonido_colision.play()
             elif self.pos_x in range(tupla1[0][1][0],tupla1[0][1][1]) and self.pos_y == 0:
                 self.direccion_filas = 0
                 self.direccion_columnas = 1
+                self.sonido_colision.play()
             elif self.pos_x in range(tupla1[0][2][0],tupla1[0][2][1]) and self.pos_y == 0:
                 self.direccion_filas = 1
                 self.direccion_columnas = 1
+                self.sonido_colision.play()
 
             #Segunda paleta del jugador1------------------------------------------------------------
             elif self.pos_x in range(tupla1[1][0][0],tupla1[1][0][1]) and self.pos_y == 0:
                 self.direccion_filas = -1
                 self.direccion_columnas = 1
+                self.sonido_colision.play()
             elif self.pos_x in range(tupla1[1][1][0],tupla1[1][1][1]) and self.pos_y == 0:
                 self.direccion_filas = 0
                 self.direccion_columnas = 1
+                self.sonido_colision.play()
             elif self.pos_x in range(tupla1[1][2][0],tupla1[1][2][1]) and self.pos_y == 0:
                 self.direccion_filas = 1
                 self.direccion_columnas = 1
+                self.sonido_colision.play()
             #Primera paleta del jugador 2------------------------------------------------------------
 
             elif self.pos_x in range(tupla2[0][0][0],tupla2[0][0][1]) and self.pos_y == 39:
                 self.direccion_filas = -1
                 self.direccion_columnas = -1
+                self.sonido_colision.play()
             elif self.pos_x in range(tupla2[0][1][0],tupla2[0][1][1]) and self.pos_y == 39:
                 self.direccion_filas = 0
                 self.direccion_columnas = -1
+                self.sonido_colision.play()
             elif self.pos_x in range(tupla2[0][2][0],tupla2[0][2][1]) and self.pos_y == 39:
                 self.direccion_filas = 1
                 self.direccion_columnas = -1
+                self.sonido_colision.play()
             #Segunda paleta del jugador 2
             elif self.pos_x in range(tupla2[1][0][0],tupla2[1][0][1]) and self.pos_y == 39:
                 self.direccion_filas = -1
                 self.direccion_columnas = -1
+                self.sonido_colision.play()
             elif self.pos_x in range(tupla2[1][1][0],tupla2[1][1][1]) and self.pos_y == 39:
                 self.direccion_filas = 0
                 self.direccion_columnas = -1
+                self.sonido_colision.play()
             elif self.pos_x in range(tupla2[1][2][0],tupla2[1][2][1]) and self.pos_y == 39:
                 self.direccion_filas = 1
                 self.direccion_columnas = -1
+                self.sonido_colision.play()
 
             elif self.pos_x == 0 or self.pos_x == 24:
                 self.direccion_filas = -self.direccion_filas
