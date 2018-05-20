@@ -46,8 +46,7 @@ a=True #Variable de control de nivel
 b=True #Variable de control de nivel
 c=True #Variable de control de nivel
 d=True #Variable de control de nivel
-e=True #Variable de control de nivel
-f=True #Variable de control de nivel
+
 while valor:                                                      #Bucle principal
 
     if Principal_1:                                              #Si el usuario esta en la pantalla principal
