@@ -221,6 +221,7 @@ while valor:                                                      #Bucle princip
          ventana.blit(FUENTE1.render(str(j1), True, (255, 255, 255)), (150, 50)) #Muestra en pantalla la puntuacion de jugador 1
          ventana.blit(FUENTE1.render(str(j2), True, (255, 255, 255)), (450, 50)) #Muestra en pantalla la puntuacion de jugador 2
          pygame.draw.rect(ventana, BLANCO, [300, -10, 10, 500])
+         si=True
          if not jugador2.humano:
              if BALL.punto_jugador2() == 5 and BALL.punto_jugador1()<4:
                  Principal_1=True
@@ -278,7 +279,7 @@ while valor:                                                      #Bucle princip
          musica.stop()
          tiempo = reloj.tick(fps)                           #Varia la velocidad del juego
     if valor==True:
-        musica.play(loops=1000)
+        musica.play(loops=100)
     else:
         musica.stop()
     pygame.display.update()                                 #Actualiza la pantalla
