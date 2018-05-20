@@ -41,7 +41,13 @@ grosor2=2                                          #Tamaño del grosor utilizado
 grosor3=2                                          #Tamaño del grosor utilizado para cuando el mosue se posiciona sobre un boton
 reloj = pygame.time.Clock()                        #Varia la velocidad del juego
 fps = 20
-valor=True
+valor=True #Variable de control de ciclo principal
+a=True #Variable de control de nivel
+b=True #Variable de control de nivel
+c=True #Variable de control de nivel
+d=True #Variable de control de nivel
+e=True #Variable de control de nivel
+f=True #Variable de control de nivel
 while valor:                                                      #Bucle principal
 
     if Principal_1:                                              #Si el usuario esta en la pantalla principal
@@ -215,7 +221,7 @@ while valor:                                                      #Bucle princip
                  if cantidad_jugadores == 2:               #Si los jugadores son dos humanos
                      jugador2.moverse(matriz_principal,1,0,0)  #Permite que el segundo jugador se mueva para abajo
 
-         if BALL.pos_y in range(20,22) or BALL.pos_y in range(30, 32): #indica las direcciones de bola para que el cpu sepa hacia donde moverse
+         if BALL.pos_y in range(20,27) or BALL.pos_y in range(30, 37): #indica las direcciones de bola para que el cpu sepa hacia donde moverse
              jugador2.moverse(matriz_principal,0,BALL.pos_x,BALL.direccion_columnas)#le da movilidad al cpu
 
          ventana.blit(FUENTE1.render(str(j1), True, (255, 255, 255)), (150, 50)) #Muestra en pantalla la puntuacion de jugador 1
@@ -226,8 +232,7 @@ while valor:                                                      #Bucle princip
                  Principal_1=True
                  BALL.punto1 = 0
                  BALL.punto2 = 0
-             if BALL.punto_jugador1() == 5 or BALL.punto_jugador2()==5:
-
+             if a and (BALL.punto_jugador1() == 5 or BALL.punto_jugador2()==5):
                  jugador1 = Jugador(0,jugador1.y , 6, True, jugador1.cantidad_paletas)  # Crea jugador 1
                  jugador2 = Jugador(39, jugador2.y, 6, False, jugador2.cantidad_paletas)  # Crea jugador 2
                  for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
@@ -236,23 +241,24 @@ while valor:                                                      #Bucle princip
                  jugador1.dibujar_en_pantalla(matriz_principal)
                  jugador2.dibujar_en_pantalla(matriz_principal)
                  fps = 25
-                 if BALL.punto_jugador1() == 10 or BALL.punto_jugador2()==10:
-
-                     jugador1 = Jugador(0,jugador1.y , 3, True, jugador1.cantidad_paletas)  # Crea jugador 1
-                     jugador2 = Jugador(39, jugador2.y, 3, False, jugador2.cantidad_paletas)  # Crea jugador 2
-                     for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
-                         matriz_principal[i][0] = 0
-                         matriz_principal[i][39] = 0
-                     jugador1.dibujar_en_pantalla(matriz_principal)
-                     jugador2.dibujar_en_pantalla(matriz_principal)
-                     fps = 30
-                     if BALL.punto_jugador1() == 15 or BALL.punto_jugador2()==15:
-                         Principal_1 = True
-                         BALL.punto1 = 0
-                         BALL.punto2 = 0
+                 a=False
+             if b and (BALL.punto_jugador1() == 10 or BALL.punto_jugador2() == 10):
+                 jugador1 = Jugador(0, jugador1.y, 3, True, jugador1.cantidad_paletas)  # Crea jugador 1
+                 jugador2 = Jugador(39, jugador2.y, 3, False, jugador2.cantidad_paletas)  # Crea jugador 2
+                 for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
+                     matriz_principal[i][0] = 0
+                     matriz_principal[i][39] = 0
+                 jugador1.dibujar_en_pantalla(matriz_principal)
+                 jugador2.dibujar_en_pantalla(matriz_principal)
+                 fps = 30
+                 b=False
+             if c and (BALL.punto_jugador1() == 15 or BALL.punto_jugador2() == 15):
+                 Principal_1 = True
+                 BALL.punto1 = 0
+                 BALL.punto2 = 0
+                 c=False
          else:
-             if BALL.punto_jugador1() == 5 or BALL.punto_jugador2() == 5:
-
+             if d and (BALL.punto_jugador1() == 5 or BALL.punto_jugador2() == 5):
                  jugador1 = Jugador(0, jugador1.y, 6, True, jugador1.cantidad_paletas)  # Crea jugador 1
                  jugador2 = Jugador(39, jugador2.y, 6, True, jugador2.cantidad_paletas)  # Crea jugador 2
                  for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
@@ -261,24 +267,26 @@ while valor:                                                      #Bucle princip
                  jugador1.dibujar_en_pantalla(matriz_principal)
                  jugador2.dibujar_en_pantalla(matriz_principal)
                  fps = 25
-                 if BALL.punto_jugador1() == 10 or BALL.punto_jugador2() == 10:
-
-                     jugador1 = Jugador(0, jugador1.y, 3, True, jugador1.cantidad_paletas)    #Crea jugador 1
-                     jugador2 = Jugador(39, jugador2.y, 3, True, jugador2.cantidad_paletas)   #Crea jugador 2
-                     for i in range(1, 24):                           #Iteracion que limpia la parte de la pantalla del juagdor
-                         matriz_principal[i][0] = 0
-                         matriz_principal[i][39] = 0
-                     jugador1.dibujar_en_pantalla(matriz_principal)
-                     jugador2.dibujar_en_pantalla(matriz_principal)
-                     fps = 30
-                     if BALL.punto_jugador1() == 15 or BALL.punto_jugador2() == 15:
-                         Principal_1=True
-                         BALL.punto1 = 0
-                         BALL.punto2 = 0
+                 d=False
+             if e and (BALL.punto_jugador1() == 10 or BALL.punto_jugador2() == 10):
+                 jugador1 = Jugador(0, jugador1.y, 3, True, jugador1.cantidad_paletas)  # Crea jugador 1
+                 jugador2 = Jugador(39, jugador2.y, 3, True, jugador2.cantidad_paletas)  # Crea jugador 2
+                 for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
+                     matriz_principal[i][0] = 0
+                     matriz_principal[i][39] = 0
+                 jugador1.dibujar_en_pantalla(matriz_principal)
+                 jugador2.dibujar_en_pantalla(matriz_principal)
+                 fps = 30
+                 e=False
+             if f and (BALL.punto_jugador1() == 15 or BALL.punto_jugador2() == 15):
+                 Principal_1 = True
+                 BALL.punto1 = 0
+                 BALL.punto2 = 0
+                 f=False
          musica.stop()
          tiempo = reloj.tick(fps)                           #Varia la velocidad del juego
-    if valor==True:
+    if valor==True: #Si el ciclo aun se hace continua la musica
         musica.play(loops=100)
     else:
-        musica.stop()
+        musica.stop() #si no la detiene
     pygame.display.update()                                 #Actualiza la pantalla
