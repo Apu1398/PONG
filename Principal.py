@@ -236,8 +236,8 @@ while valor:                                                      #Bucle princip
                  a=True
                  b=True
              if a and (BALL.punto_jugador1() == 5 or BALL.punto_jugador2()==5):
-                 jugador1 = Jugador(0,2 , 6, True, jugador1.cantidad_paletas)  # Crea jugador 1
-                 jugador2 = Jugador(39, 2, 6, False, jugador2.cantidad_paletas)  # Crea jugador 2
+                 jugador1 = Jugador(0,jugador1.y , 6, True, jugador1.cantidad_paletas)  # Crea jugador 1
+                 jugador2 = Jugador(39, jugador2.y, 6, False, jugador2.cantidad_paletas)  # Crea jugador 2
                  rango1 = (20,25)
                  rango2 = (30,35)
                  for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
@@ -248,8 +248,8 @@ while valor:                                                      #Bucle princip
                  fps = 25
                  a=False
              if b and (BALL.punto_jugador1() == 10 or BALL.punto_jugador2() == 10):
-                 jugador1 = Jugador(0, 2, 3, True, jugador1.cantidad_paletas)  # Crea jugador 1
-                 jugador2 = Jugador(39, 2, 3, False, jugador2.cantidad_paletas)  # Crea jugador 2
+                 jugador1 = Jugador(0, jugador1.y, 3, True, jugador1.cantidad_paletas)  # Crea jugador 1
+                 jugador2 = Jugador(39, jugador2.y, 3, False, jugador2.cantidad_paletas)  # Crea jugador 2
                  rango1 = (20,27)
                  rango2 = (30,38)
                  for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
@@ -267,8 +267,8 @@ while valor:                                                      #Bucle princip
                  b = True
          else:
              if c and (BALL.punto_jugador1() == 5 or BALL.punto_jugador2() == 5):
-                 jugador1 = Jugador(0,jugador1.x, 6, True, jugador1.cantidad_paletas)  # Crea jugador 1
-                 jugador2 = Jugador(39, jugador1.x, 6, True, jugador2.cantidad_paletas)  # Crea jugador 2
+                 jugador1 = Jugador(0,jugador1.y, 6, True, jugador1.cantidad_paletas)  # Crea jugador 1
+                 jugador2 = Jugador(39, jugador2.y, 6, True, jugador2.cantidad_paletas)  # Crea jugador 2
                  for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
                      matriz_principal[i][0] = 0
                      matriz_principal[i][39] = 0
@@ -277,8 +277,8 @@ while valor:                                                      #Bucle princip
                  fps = 25
                  c=False
              if d and (BALL.punto_jugador1() == 10 or BALL.punto_jugador2() == 10):
-                 jugador1 = Jugador(0, 2, 3, True, jugador1.cantidad_paletas)  # Crea jugador 1
-                 jugador2 = Jugador(39, 2, 3, True, jugador2.cantidad_paletas)  # Crea jugador 2
+                 jugador1 = Jugador(0, jugador1.y, 3, True, jugador1.cantidad_paletas)  # Crea jugador 1
+                 jugador2 = Jugador(39, jugador2.y, 3, True, jugador2.cantidad_paletas)  # Crea jugador 2
                  for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
                      matriz_principal[i][0] = 0
                      matriz_principal[i][39] = 0
