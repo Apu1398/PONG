@@ -20,8 +20,14 @@ class Bola:
         #S: dibujar bola en pantalla
         #R: No presenta
         """Metodo encargado de dibujar en la matriz la bola"""
-        matriz[self.pos_x][self.pos_y]=1
-        return matriz
+        try:
+            matriz[self.pos_x][self.pos_y] = 1
+            return matriz
+        except IndexError:
+            return matriz
+
+
+
 
     def moverse_bola(self, matriz,tupla1, tupla2):
         #E: matriz, tupla1 , tupla
@@ -30,6 +36,7 @@ class Bola:
         """Metodo que que le movilidad a la bola, verifica si la bola paso los bordes
            con lo que le da puntuacion a jugador que corresponda, aqui se le indica si colisiona con
            bordes o con alguna paleta"""
+        print(self.pos_x,self.pos_y)
 
         self.pos_y += self.direccion_columnas                             #Siempre le suma o le resta a la posicion y que tenga actualamente
         self.pos_x += self.direccion_filas
@@ -50,7 +57,9 @@ class Bola:
             self.pos_x = 12                                               # Pone la bola en el medio
             self.direccion_columnas = -self.direccion_columnas            #La bola iría en direccion contraria
             self.direccion_filas = 0
-        elif matriz[self.pos_x][self.pos_y] == 1:                         #Si la siguiente posicion es 1 la bola "Rebota"
+
+
+        elif  self.pos_y <=40 and matriz[self.pos_x][self.pos_y] == 1:                         #Si la siguiente posicion es 1 la bola "Rebota"
 
             #Primera paleta del jugador 1
             if self.pos_x in range(tupla1[0][0][0],tupla1[0][0][1]) and self.pos_y == 0:
@@ -119,9 +128,15 @@ class Bola:
             for i in range(1, 24):  #Borra la columna1
                 matriz[i][38] = 0
         else:
-            matriz[self.pos_x-self.direccion_filas][(self.pos_y)-self.direccion_columnas] = 0  #Primero "apaga el cuadrante anterior"
-            matriz[self.pos_x][self.pos_y] = 1                                                 #"Enciende el siguiente cuadrante
-        return matriz                                                                          #Retorna la matriz
+            try:
+                matriz[self.pos_x-self.direccion_filas][(self.pos_y)-self.direccion_columnas] = 0  #Primero "apaga el cuadrante anterior"
+                matriz[self.pos_x][self.pos_y] = 1                                                 #"Enciende el siguiente cuadrante
+            except IndexError:
+                self.pos_y == 39
+                matriz[self.pos_x - self.direccion_filas][(self.pos_y)] = 0  # Primero "apaga el cuadrante anterior"
+                matriz[self.pos_x][self.pos_y] = 1  # "Enciende el siguiente cuadrante
+
+        return matriz                                                                           #Retorna la matriz
 
     def punto_jugador1(self):
         """Metodo que muestra la puntuacion del jugador 1"""

@@ -46,6 +46,8 @@ a=True #Variable de control de nivel
 b=True #Variable de control de nivel
 c=True #Variable de control de nivel
 d=True #Variable de control de nivel
+rango1 = (20,22)
+rango2 =  (30,32)
 
 while valor:                                                      #Bucle principal
 
@@ -220,7 +222,7 @@ while valor:                                                      #Bucle princip
                  if cantidad_jugadores == 2:               #Si los jugadores son dos humanos
                      jugador2.moverse(matriz_principal,1,0,0)  #Permite que el segundo jugador se mueva para abajo
 
-         if BALL.pos_y in range(20,22) or BALL.pos_y in range(30, 32): #indica las direcciones de bola para que el cpu sepa hacia donde moverse
+         if BALL.pos_y in range(rango1[0],rango1[1]) or BALL.pos_y in range(rango2[0],rango2[1]): #indica las direcciones de bola para que el cpu sepa hacia donde moverse
              jugador2.moverse(matriz_principal,0,BALL.pos_x,BALL.direccion_columnas)#le da movilidad al cpu
 
          ventana.blit(FUENTE1.render(str(j1), True, (255, 255, 255)), (150, 50)) #Muestra en pantalla la puntuacion de jugador 1
@@ -236,6 +238,8 @@ while valor:                                                      #Bucle princip
              if a and (BALL.punto_jugador1() == 5 or BALL.punto_jugador2()==5):
                  jugador1 = Jugador(0,jugador1.y , 6, True, jugador1.cantidad_paletas)  # Crea jugador 1
                  jugador2 = Jugador(39, jugador2.y, 6, False, jugador2.cantidad_paletas)  # Crea jugador 2
+                 rango1 = (20,25)
+                 rango2 = (30,35)
                  for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
                      matriz_principal[i][0] = 0
                      matriz_principal[i][39] = 0
@@ -246,6 +250,8 @@ while valor:                                                      #Bucle princip
              if b and (BALL.punto_jugador1() == 10 or BALL.punto_jugador2() == 10):
                  jugador1 = Jugador(0, jugador1.y, 3, True, jugador1.cantidad_paletas)  # Crea jugador 1
                  jugador2 = Jugador(39, jugador2.y, 3, False, jugador2.cantidad_paletas)  # Crea jugador 2
+                 rango1 = (20,27)
+                 rango2 = (30,38)
                  for i in range(1, 24):  # Iteracion que limpia la parte de la pantalla del juagdor
                      matriz_principal[i][0] = 0
                      matriz_principal[i][39] = 0
